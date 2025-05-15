@@ -1,0 +1,25 @@
+% ieee.latex - Pandoc LaTeX template for IEEE style
+% Place in templates/ directory
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\usepackage{csquotes}
+\usepackage{natbib}
+\bibliographystyle{IEEEtran}
+
+$if(title)$
+  \title{$title$}
+$endif$
+$if(author)$
+  \author{$for(author)$$author$$sep$ \\ $endfor$}
+$endif$
+$if(date)$
+  \date{$date$}
+$endif$
+
+\begin{document}
+\maketitle
+$body$
+\bibliography{references}
+\end{document}

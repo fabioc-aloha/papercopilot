@@ -1,0 +1,23 @@
+% chicago.latex - Pandoc LaTeX template for Chicago style
+% Place in templates/ directory
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\doublespacing
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\usepackage{csquotes}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+
+$if(title)$
+  \begin{center}
+    \textbf{$title$}
+  \end{center}
+$endif$
+
+$body$
+\bibliography{references}
+\end{document}

@@ -1,5 +1,7 @@
 # Pre-Submission Checklist for Academic Papers
 
+> **Note:** As of May 2025, the `template/` folder is deprecated. All outlines are now fully self-contained and do not require or reference any files from `template/`.
+
 Before assembling and exporting your document, ensure the following:
 
 - [ ] All chapters are present and follow Academit-recommended outlines (e.g., IMRaD, literature review)

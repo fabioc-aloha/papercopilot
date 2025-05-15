@@ -1,6 +1,6 @@
 # GitHub Copilot Instructions for This Repository
 
-// For human usage instructions, see the 'How to Use the Copilot Instructions File' section in README.md. This file is for Copilot/AI and automation compliance.
+> **Note:** This file, together with `README.md`, is the canonical source for all automation, workflow, and compliance rules for both human and AI contributors. For architectural or strategic changes, consult `DECISIONS.md`. For style and formatting, see `guidelines/GUIDELINES.md` and the appropriate style file.
 
 ## 1. Architectural and Strategic Guidelines
 - You must consult `DECISIONS.md` before proposing or making any architectural or strategic changes.
@@ -30,52 +30,50 @@
 - All contributors and tools must ensure compliance with these guidelines for every academic writing task.
 
 ## 5. Automated Research Paper Workflow
-- When initializing a new paper, create all required files (e.g., chapter files, references.md, CHECKLIST.md) using the latest templates, but never change or delete `input_requirements.md` if it already exists in the folder.
-- When initializing a new project or paper, determine if the requirements indicate an essay (argumentative, expository, analytical, etc.) rather than a research paper. If so, use the essay templates (e.g., `essay_introduction.md`, `essay_body.md`, `essay_conclusion.md`, `essay_references.md`) and the essay input requirements template. Only include sections relevant to the essay format and the selected style.
-- All templates for papers and essays are now located in the `template/` folder at the project root. Template filenames do not include the word 'template'. For example: `template/introduction.md`, `template/essay_body.md`, `template/references.md`, etc.
-- When initializing a new project, select templates from the `template/` folder based on the requirements in `input_requirements.md` (or `essay_input_requirements.md`).
-- When generating or updating content, always use the correct template from the `template/` folder for the required section or chapter.
+- When initiating a new paper, create a single file (e.g., `paper.md`) in the target folder. This file must:
+  - Begin with the paper requirements (title, topic, goals, writing style, paper type, outline preference, and any additional requirements) at the top as a comment block.
+  - Include a properly formatted title page as the first section, followed by a page break (`\\pagebreak`).
+  - Place the abstract and keywords on their own page, followed by a page break.
+  - Present all main sections (introduction, methods, results, discussion, conclusion, etc.) in canonical order, each starting after the previous section (no extra page breaks unless required by style).
+  - Start the references section on a new page with a page break before it.
+  - Start the appendix (if present) on a new page with a page break before it.
+  - Use `\\pagebreak` to ensure correct pagination when converting to Word or PDF.
+  - Ensure all content is in a single file, not split into separate section files.
+- Use the selected outline and requirements to guide the initial structure and content of `paper.md`.
+- Do not break the paper into multiple files.
+- Continue to use `input_requirements.md` for requirements and `CHECKLIST.md` for workflow tracking.
+- When assembling or exporting, use only the content from the single paper file.
+- When initializing a new project or paper, determine if the requirements indicate an essay (argumentative, expository, analytical, etc.) rather than a research paper. If so, use the appropriate essay outline from `outlines/` (e.g., `essay_general.md`). Only include sections relevant to the essay format and the selected style.
+- All section instructions and content guidance are now embedded directly in the outlines in `outlines/`. The `template/` folder is deprecated and must not be referenced or used for file creation or content generation.
+- When generating or updating content, always use the structure and instructions from the selected outline in `outlines/` for the required section or chapter.
 - Automate file creation and updates in the background, without opening files in the editor, to prevent file locking or save conflicts.
 - The workflow for paper creation is as follows:
   1. **Define Paper Requirements:**
      - Start by completing or reviewing `input_requirements.md` in the paper's folder.
      - Clearly state the research goals, objectives, and any specific requirements.
-  2. **Literature Review (First Step):**
-     - Begin the writing process with the `literature_review.md` file.
-     - Conduct a comprehensive review of relevant literature based on the goals in `input_requirements.md`.
-     - Summarize, synthesize, and critically evaluate sources.
-     - Identify gaps and trends to inform the rest of the paper.
-     - Ensure all sources are cited in the required style and fact-checked.
-  3. **Draft Remaining Chapters:**
-     - Use insights from the literature review to guide the drafting of the remaining required chapters.
-     - Select the appropriate chapter templates for each chapter based on the paper's requirements and the specified writing style in `input_requirements.md`.
-     - For example, include only those chapters (e.g., `introduction.md`, `methods.md`, `results.md`, `discussion.md`, `conclusion.md`, etc.) that are required for the selected style and paper needs.
-     - Follow the structure and style in `GUIDELINES.md` and the relevant guideline file (e.g., `GUIDELINES_APA7.md`).
-     - Ensure all content is professional, fact-checked, and style-compliant.
+  2. **Outline Selection (New Logic):**
+     - Read `input_requirements.md` to determine the paper or essay type (e.g., research paper, essay).
+     - Select the appropriate outline from the `outlines/` folder (e.g., `researchpaper_general.md`, `essay_general.md`).
+     - The outline provides the canonical structure: the order and names of required and optional sections, and all section instructions, but **never any style, citation, or formatting rules**.
+  3. **Draft Sections:**
+     - Use the outline to determine which sections to include in the single file and in what order.
+     - Generate content for each section using the instructions embedded in the outline.
+     - Ensure all content is professional, fact-checked, and style-compliant by referencing the selected guideline file in `guidelines/`.
   4. **References:**
      - As you write, add all cited sources to `references.md`.
      - Ensure every in-text citation has a corresponding, fact-checked reference entry.
-     - Do not include reference lists in individual chapters; consolidate all references in `references.md` and organize alphabetically by author surname.
+     - Do not include reference lists in individual sections; consolidate all references in `references.md` and organize alphabetically by author surname.
      - All references must strictly follow the selected style's standards for formatting.
   5. **Peer Review & Checklist:**
-     - Each chapter must be peer reviewed for academic quality and compliance.
+     - Each section must be peer reviewed for academic quality and compliance.
      - Complete the `CHECKLIST.md` before final assembly.
   6. **Assembly & Export:**
-     - Once all chapters are complete and reviewed, assemble them in the canonical order required by the selected style.
+     - Assemble the document in the order specified by the selected outline.
+     - Apply all formatting and citation rules from the selected guideline file in `guidelines/`.
      - Export the assembled content as a `.docx` file in the same folder.
-     - When assembling a paper or essay, always consult `input_requirements.md` in the target folder to determine the required and optional chapters/sections for the selected style and user requirements.
-     - Before assembly, check for the existence of each required and optional section file (e.g., introduction.md, body.md, conclusion.md, references.md, appendix.md, etc.) as specified in `input_requirements.md` and the canonical order for the style.
-     - If any required section is missing, issue a clear error and halt the assembly/export process until the missing content is created. Do not proceed to export with missing required chapters.
-     - Always use the latest content from each section file during assembly. Do not use cached, outdated, or placeholder content.
-     - Assemble the document in the canonical order specified by the style and user requirements, including all required and present optional sections.
+     - If any required section is missing, issue a clear error and halt the assembly/export process until the missing content is created. Do not proceed to export with missing required sections.
+     - Always use the latest content from the single paper file during assembly. Do not use cached, outdated, or placeholder content.
      - After assembly, verify that all sections are present and in the correct order. If any are missing, notify the user and do not proceed to export.
-     - The Python assembly script (`assemble_and_convert.py`) enforces these requirements and will halt with an error if any required chapter is missing.
-     - All required and optional chapters/sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist before assembly/export. The process halts with a clear error if any are missing.
-     - The Python script (`assemble_and_convert.py`) dynamically assembles the document in canonical order, always using the latest content from each section file.
-     - Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) are supported and should be used as documented in `LEARNINGS.md`.
-     - Always use a reference .docx template for consistent formatting. References and citations are handled via Pandoc filters, with support for further customization.
-     - If you update the Pandoc arguments or add new markdown features, update `LEARNINGS.md` accordingly.
-     - All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.
   7. **Final Validation:**
      - Double-check that all requirements from `input_requirements.md` are met.
      - Ensure no content from other folders is included.
@@ -84,71 +82,37 @@
      - Fact-check all statements and support them with credible, up-to-date sources.
      - Use in-text citations and references in the required style for all claims and data.
      - Ensure all content is professional, clear, and suitable for academic publication.
-     - Use the provided chapter templates to maintain structure, style, and formatting consistency.
+     - Use the provided section instructions in the outline to maintain structure, style, and formatting consistency.
      - Review and revise each section for clarity, coherence, and adherence to `GUIDELINES.md` before peer review.
   9. **Final Review:**
      - Double-check that all formatting requirements (e.g., double spacing, margins, font, page numbers, running head, title page, abstract, section headings) are met in the final .docx.
      - Ensure every in-text citation has a corresponding, fact-checked reference entry.
      - Use the `CHECKLIST.md` to verify all workflow and quality steps are completed before submission or publication.
   10. **Review Assembled Document for Instructional Text:**
-      - After assembling the paper, review the generated assembled_paper.md (and .docx) to ensure no instructional, template, or formatting guideline text remains in the final document.
-      - Remove any placeholder instructions, checklist items, or template notes before submission or publication.
+      - After assembling the paper, review the generated assembled_paper.md (and .docx) to ensure no instructional, outline, or formatting guideline text remains in the final document.
+      - Remove any placeholder instructions, checklist items, or outline notes before submission or publication.
   11. **Finalize Checklist:**
       - At the end of the workflow, check off all items in `CHECKLIST.md` in the paper folder to indicate project completion. This ensures the project is marked as finished, even if additional tasks are added to the checklist in the future.
   12. **Configure Assembly/Export Script:**
       - After initiating a new paper, verify that the assembly/export script (e.g., `assemble_and_convert.py`) is set to convert the content of the correct folder. Update the script arguments or configuration as needed to ensure the right paper folder is processed.
-  - When generating content for any chapter, do NOT produce generic placeholders, template text, or vague summaries. All generated content must:
+  - When generating content for any section, do NOT produce generic placeholders, template text, or vague summaries. All generated content must:
     - Synthesize real, relevant, and up-to-date academic knowledge for the topic, using credible sources and following the requirements in `input_requirements.md`.
     - Be written in a professional, publication-ready style, fully compliant with the selected citation and formatting guidelines.
     - Include specific, fact-checked information, critical analysis, and in-text citations in the required style (e.g., APA 7).
     - Avoid using bracketed placeholders (e.g., [insert topic], [theme 1]) or instructional comments in the output.
-    - Only use instructional or placeholder text if the user explicitly requests a template or outline, not full content.
+    - Only use instructional or placeholder text if the user explicitly requests an outline, not full content.
   - When you receive instructions from the user in the chat, you must ensure those instructions are incorporated into the Copilot instructions and workflow as appropriate. Update this file to reflect any new requirements, workflow changes, or user preferences provided in the chat, so that future automation and content generation fully align with user expectations.
 
-## 6. Chapter Template Selection Logic
-| Chapter Type                  | Included For (Styles)                | Usage Guidelines                                                                                 |
-|-------------------------------|--------------------------------------|--------------------------------------------------------------------------------------------------|
-| **Introduction**              | All                                  | Always included as a core chapter.                                                               |
-| **Literature Review**         | All                                  | Always included as a core chapter.                                                               |
-| **Methods / Methodology**     | All                                  | Always included as a core chapter.                                                               |
-| **Results**                   | All                                  | Always included as a core chapter.                                                               |
-| **Discussion**                | All                                  | Always included as a core chapter.                                                               |
-| **Conclusion**                | All                                  | Always included as a core chapter.                                                               |
-| **References / Works Cited / Bibliography** | All (style-dependent)             | Always included; file name and format depend on style (see guideline file).                      |
-| **Title Page**                | APA 7, Chicago/Turabian, ABNT        | Included if required by style or journal. Not used in MLA by default.                            |
-| **Abstract**                  | APA 7, ABNT                          | Included if required by style or journal.                                                        |
-| **Author Note**               | APA 7                                | Include if required by journal or instructor.                                                    |
-| **Works Cited**               | MLA                                  | Used instead of References/Bibliography.                                                         |
-| **Bibliography**              | Chicago/Turabian                     | Used instead of References/Works Cited.                                                          |
-| **Footnotes/Endnotes**        | Chicago/Turabian, as needed          | Include if required by style or for additional commentary.                                       |
-| **Table of Contents**         | Chicago/Turabian, ABNT               | Include if required by style or for long documents.                                              |
-| **Cover Page**                | ABNT                                 | Include if required by institution.                                                              |
-| **Resumo (Abstract in Portuguese)** | ABNT                         | Include if required by institution.                                                              |
-| **Sumário (Summary)**         | ABNT                                 | Include if required by institution.                                                              |
-| **Appendix / Appendices**     | All (optional)                       | Include if referenced in requirements or needed for supplementary material.                      |
-| **Acknowledgments**           | All (optional)                       | Include if requested by user or required by institution.                                         |
-| **Dedication**                | All (optional)                       | Include if requested by user.                                                                    |
-| **Preface**                   | All (optional)                       | Include if requested by user.                                                                    |
-| **List of Figures / Tables**  | All (optional)                       | Include if document contains multiple figures/tables and style requires a list.                  |
-| **Glossary**                  | All (optional)                       | Include if document uses specialized terminology.                                                |
-| **Executive Summary**         | All (optional)                       | Include for reports or as required by institution.                                               |
-| **Statement of the Problem**  | All (optional)                       | Include if required by assignment or institution.                                                |
-| **Background**                | All (optional)                       | Include if required by assignment or institution.                                                |
-| **Recommendations**           | All (optional)                       | Include for reports or as required by assignment.                                                |
-| **Limitations**               | All (optional)                       | Include if required by assignment or institution.                                                |
-| **Future Work / Directions for Future Research** | All (optional)         | Include if required by assignment or institution.                                                |
-| **Ethical Considerations**    | All (optional)                       | Include if required by assignment or institution.                                                |
-| **Funding Statement**         | All (optional)                       | Include if required by journal or institution.                                                   |
-| **Conflict of Interest Statement** | All (optional)                  | Include if required by journal or institution.                                                   |
-
-**Usage Guidelines:**
-- Core chapters are always included for every paper.
-- Style-dependent chapters are included based on the selected writing style in `input_requirements.md`.
-- Optional and supplementary chapters can be added or removed by editing `input_requirements.md` or upon user request.
-- Each chapter template contains usage instructions to guide inclusion.
-- All chapter templates are maintained in the project root and referenced automatically or manually as needed.
-
-*This table ensures that every academic paper is initialized with the appropriate structure for its style and requirements, while allowing for flexibility and user customization.*
+## 6. Outline Selection Logic (Replaces Chapter Template Selection)
+- Instead of hardcoding chapter or section selection based on style, the workflow now uses an **outline selection logic**:
+  - Read `input_requirements.md` in the target folder to determine the paper or essay type (e.g., research paper, essay).
+  - Select the appropriate outline from the `outlines/` folder (e.g., `researchpaper_general.md`, `essay_general.md`).
+  - The outline provides the canonical structure: the order and names of required and optional sections, and all section instructions, but **never any style, citation, or formatting rules**.
+  - All style enforcement (section naming, formatting, citation, etc.) is handled by the corresponding file in `guidelines/` (e.g., `ieee.md`, `apa7.md`).
+- When generating or updating content, always use the structure and instructions from the selected outline in `outlines/` for the required section or chapter.
+- When adding new outlines, keep them style-agnostic and focused on structure only. Never include style, citation, or formatting rules in outlines/.
+- When updating or adding new guidelines, include all style-specific rules and requirements.
+- Document all changes and decisions in `LEARNINGS.md` and `DECISIONS.md`.
 
 ## 7. File Handling and User Instruction Preservation
 - Never change or delete the `input_requirements.md` file in any paper folder if it already exists. This preserves user instructions and requirements for the paper.
@@ -158,17 +122,45 @@
 
 ## 9. Key User Commands and Automation Triggers
 This repository supports the following user commands for automated academic paper workflows:
-- **initiate [folder] with [descriptions and requirements for the paper]**: Initialize a new paper folder with all required chapter files, references, and checklist, using the provided requirements. Never overwrite an existing `input_requirements.md`.
-- **create content**: Generate content for all required chapters in the selected folder, following the workflow and consulting `input_requirements.md` for structure, style, and requirements.
-- **review content**: Review generated content for academic quality, guideline compliance, and completeness. Ensure all instructional/template text is removed before final assembly.
-- **save to word**: Assemble all chapters in canonical order and export the paper as a `.docx` file, ensuring all formatting and style requirements are met.
+
+- **initiate [folder] with [requirements and customization]**: Initialize a new paper or essay by simply creating the necessary folder and all required section files, references, and checklist, using the provided requirements. The system will:
+  - Create the target folder if it does not exist.
+  - Read or create `input_requirements.md` in the target folder.
+  - Select the appropriate outline from `outlines/` based on the requirements.
+  - Create all required sections in a single file (e.g., `paper.md`) using the structure and instructions embedded in the selected outline. No content is copied from `template/`.
+  - Never overwrite an existing `input_requirements.md`.
+
+- **create content**: Generate content for all required sections in the selected folder, following the structure and instructions in the selected outline and consulting `input_requirements.md` for requirements and style.
+
+- **review content**: Review generated content for academic quality, guideline compliance, and completeness. Optionally, use subcommands:
+  - **review section [section name]**: Review a specific section for clarity, style, and completeness.
+  - **review references**: Check that all in-text citations have corresponding, correctly formatted entries in `references.md`.
+  - **review checklist**: Display or update the completion checklist for the paper folder, ensuring all workflow and quality steps are completed before submission or publication.
+
+- **dive [section name]**: Provide a detailed breakdown, critique, or improvement suggestions for a specific section (e.g., "dive introduction").
+
+- **save to word**: Assemble all sections in canonical order (as specified by the selected outline) and export the paper as a `.docx` file, ensuring all formatting and style requirements are met.
+
 - **checklist**: Display or update the completion checklist for the paper folder, ensuring all workflow and quality steps are completed before submission or publication.
+
+- **show outline**: Display the canonical structure and section instructions from the selected outline for the current paper or essay.
+
+- **show requirements**: Display the current `input_requirements.md` for the selected folder.
 
 These commands are recognized by Copilot and automation tools. For each, the workflow will:
 - Consult `input_requirements.md` for requirements and style
-- Use chapter templates for structure
+- Use the selected outline for structure and section instructions
 - Ensure all content is professional, fact-checked, and style-compliant
 - Consolidate all references in `references.md`
-- Remove instructional/template text before final output
+- Remove instructional or outline text before final output
 
 See the main instructions above for full workflow and compliance details.
+
+## Version 2: Outline-Driven, Style-Agnostic Workflow (2025+)
+- All automation and Copilot workflows use outline selection logic instead of hardcoded chapter selection.
+- Each paper or essay type is defined by a style-agnostic outline in outlines/ (e.g., researchpaper_general.md, essay_general.md). Outlines specify only the canonical structure (order and names of required/optional sections).
+- All style, citation, and formatting rules are enforced by the corresponding file in guidelines/ (e.g., ieee.md, apa7.md). Outlines never include style rules.
+- The automation and assembly scripts use the selected outline to determine which section files to assemble and in what order, ensuring flexibility and style-agnostic structure.
+- Contributors (human and AI) must never hardcode style rules in outlines/ or templates/.
+- All documentation, templates, and scripts have been updated to reflect this logic. See README.md and .github/copilot-instructions.md for details.
+- To-do: Expand outlines/ to support additional popular academic structures (see DECISIONS.md for the list).

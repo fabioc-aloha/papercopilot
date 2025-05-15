@@ -101,3 +101,33 @@ This project demonstrated a robust, chat-driven workflow for creating, refining,
 
 ### Impact
 - These practices ensure that academic documents retain their structure, formatting, and references when exported to Word, reducing manual post-processing and supporting compliance with academic standards.
+
+## Version 2: Outline-Driven, Style-Agnostic Workflow (2025+)
+- All automation and Copilot workflows use outline selection logic instead of hardcoded chapter selection.
+- Each paper or essay type is defined by a style-agnostic outline in outlines/ (e.g., researchpaper_general.md, essay_general.md). Outlines specify only the canonical structure (order and names of required/optional sections).
+- All style, citation, and formatting rules are enforced by the corresponding file in guidelines/ (e.g., ieee.md, apa7.md). Outlines never include style rules.
+- The automation and assembly scripts use the selected outline to determine which section files to assemble and in what order, ensuring flexibility and style-agnostic structure.
+- Contributors (human and AI) must never hardcode style rules in outlines/ or templates/.
+- All documentation, templates, and scripts have been updated to reflect this logic. See README.md and .github/copilot-instructions.md for details.
+- To-do: Expand outlines/ to support additional popular academic structures (see DECISIONS.md for the list).
+
+## 2025-05-14: Outline-Driven Workflow Best Practices
+- Always use outline selection logic: select the appropriate outline from outlines/ based on input_requirements.md to determine structure (order and names of required/optional sections).
+- Outlines/ must remain style-agnostic and never include style, citation, or formatting rules.
+- All style enforcement (section naming, formatting, citation, etc.) is handled by the corresponding file in guidelines/.
+- When generating or assembling content, always use the correct template from template/ for the required section or chapter, as determined by the selected outline.
+- When adding new outlines, keep them focused on structure only.
+- When updating or adding new guidelines, include all style-specific rules and requirements.
+- Document all changes and decisions in LEARNINGS.md and DECISIONS.md.
+- Automation and Copilot/AI must follow the same workflow and compliance rules as human contributors.
+
+## 2025-05-14: Documentation Streamlining and Consistency
+
+- The documentation for both human and Copilot/automation contributors has been reviewed and streamlined for clarity and consistency.
+- The canonical workflow is now fully outline-driven and style-agnostic: all structure is determined by the selected outline in `outlines/`, and all style/citation/formatting rules are enforced by the corresponding file in `guidelines/`.
+- All contributors (human and AI) must follow the same workflow, compliance, and file handling rules, as described in `README.md` and `.github/copilot-instructions.md`.
+- Redundant or outdated statements have been removed, and all files now reference the correct sources for workflow, style, and automation rules.
+- For any architectural or strategic changes, contributors must consult `DECISIONS.md`.
+- For operational rules and automation requirements, see `.github/copilot-instructions.md`.
+- For workflow, commands, and user instructions, see `README.md`.
+- For style and formatting, see `guidelines/GUIDELINES.md` and the appropriate style file.
