@@ -1,38 +1,81 @@
-# Academic Research Paper Project
+# PaperCopilot: Automated Academic Paper Workflow
 
-This project provides a modular, automated workflow for creating professional, publication-ready academic research papers using IMRaD structure and a wide range of academic writing styles.
+## Purpose
+PaperCopilot streamlines the creation, management, and export of academic research papers and essays, ensuring strict compliance with professional and publication-ready standards for multiple citation styles (APA 7, Chicago, ABNT, MLA, Harvard, Vancouver, IEEE, Turabian, and more).
+
+## Features
+- Automated initialization of new academic papers and essays with all required files and templates
+- Support for multiple academic writing and citation styles
+- Workflow automation for literature review, chapter/section drafting, peer review, and export
+- Centralized reference management and style compliance
+- Checklist-driven quality control and final validation
+- Extensible template and guideline system (all templates are now in the `template/` folder, filenames do not include the word 'template')
+- Azure best practices integration for technical content
+
+## User Instructions
+
+### Key Commands and Workflow
+
+#### 1. `initiate [folder] with [descriptions and requirements for the paper or essay]`
+- Initializes a new paper or essay in the specified folder.
+- Creates all required files (e.g., `introduction.md`, `literature_review.md`, `essay_body.md`, etc.) using the latest templates from the `template/` folder.
+- Reads and preserves any existing `input_requirements.md` file.
+- Use this command to start a new project with custom requirements.
+
+#### 2. `create content`
+- Generates content for all required chapters/sections in the selected folder.
+- Consults `input_requirements.md` to determine structure, style, and requirements.
+- Follows the automated workflow and uses templates from the `template/` folder.
+- Ensures all content is professional, fact-checked, and includes citations and references in the required style.
+
+#### 3. `review content`
+- Reviews the generated content for academic quality, guideline compliance, and completeness.
+- Checks for adherence to the selected writing style and project requirements.
+- Ensures all instructional/template text is removed before final assembly.
+
+#### 4. `save to word`
+- Assembles all chapters/sections in canonical order and exports the document as a `.docx` file in the same folder.
+- Ensures all formatting and style requirements are met in the exported document.
+
+#### 5. `checklist`
+- Displays or updates the completion checklist for the folder.
+- Ensures all workflow and quality steps are completed before submission or publication.
+
+---
+
+For more details on workflow and style compliance, see `.github/copilot-instructions.md`, `guidelines/GUIDELINES.md`, and the `guidelines/` folder.
 
 ## Supported Writing Styles
 
-| Style      | Guideline File              | Typical Use Cases                                      |
-|------------|----------------------------|--------------------------------------------------------|
-| ABNT       | GUIDELINES_ABNT.md         | Academic work in Brazil                                |
-| APA 7      | GUIDELINES_APA7.md         | Social sciences, health sciences                       |
-| Chicago    | GUIDELINES_CHICAGO.md      | Humanities, some social sciences                       |
-| Harvard    | GUIDELINES_HARVARD.md      | Social sciences, business, STEM                        |
-| IEEE       | GUIDELINES_IEEE.md         | Engineering, computer science, technical fields        |
-| MLA        | GUIDELINES_MLA.md          | Language, literature, humanities                       |
-| Turabian   | GUIDELINES_TURABIAN.md     | Student papers in the US (based on Chicago style)      |
-| Vancouver  | GUIDELINES_VANCOUVER.md    | Medical, scientific research                           |
+| Style      | Guideline File                  | Typical Use Cases                                      |
+|------------|---------------------------------|--------------------------------------------------------|
+| ABNT       | guidelines/abnt.md              | Academic work in Brazil                                |
+| APA 7      | guidelines/apa7.md              | Social sciences, health sciences                       |
+| Chicago    | guidelines/chicago.md           | Humanities, some social sciences                       |
+| Harvard    | guidelines/harvard.md           | Social sciences, business, STEM                        |
+| IEEE       | guidelines/ieee.md              | Engineering, computer science, technical fields        |
+| MLA        | guidelines/mla.md               | Language, literature, humanities                       |
+| Turabian   | guidelines/turabian.md          | Student papers in the US (based on Chicago style)      |
+| Vancouver  | guidelines/vancouver.md         | Medical, scientific research                           |
 
 For each style, see the corresponding guideline file for authoritative rules on structure, citations, references, and formatting.
 
 ## Key User Instructions
 
-- **Specify the required writing style in `input_requirements.md` for each paper.**
+- **Specify the required writing style in `input_requirements.md` for each paper or essay.**
 - Follow the human workflow:
-  1. Complete or review `input_requirements.md` in the paper's folder, including the writing style.
-  2. Draft each chapter using the provided templates and follow the structure required by the selected style.
+  1. Complete or review `input_requirements.md` in the folder, including the writing style.
+  2. Draft each chapter/section using the provided templates from the `template/` folder and follow the structure required by the selected style.
   3. Add all cited sources to `references.md` (or Works Cited/Bibliography as required by the style).
-  4. Peer review each chapter and complete `CHECKLIST.md` before final assembly.
-  5. Assemble and export the paper as a `.docx` file using the provided script.
+  4. Peer review each chapter/section and complete `CHECKLIST.md` before final assembly.
+  5. Assemble and export the document as a `.docx` file using the provided script.
   6. Double-check all requirements, formatting, and references before submission.
 
 - **Automation & Copilot/AI Rules:**
   - All detailed automation, file handling, and Copilot/AI compliance instructions are maintained in `.github/copilot-instructions.md`. Refer to that file for operational rules and automation requirements.
-  - Never change or delete the `input_requirements.md` file in any paper folder if it already exists. This preserves user instructions and requirements for the paper.
+  - Never change or delete the `input_requirements.md` file in any folder if it already exists. This preserves user instructions and requirements for the document.
   - If user instructions are missing, ambiguous, or contradictory, always ask clarifying questions before proceeding. Do not make assumptions—seek explicit guidance from the user to ensure correct and expected behavior.
-  - Always follow the selected style's guideline file (see above) and project guidelines as described in `GUIDELINES.md`.
+  - Always follow the selected style's guideline file (see above) and project guidelines as described in `guidelines/GUIDELINES.md`.
   - Reference `DECISIONS.md` before making architectural or strategic changes.
   - Document all significant implementation learnings, optimizations, and failures in `LEARNINGS.md`.
 
@@ -49,8 +92,8 @@ The following table summarizes how chapters are selected and included based on t
 | **Discussion**                | All                                  | Always included as a core chapter.                                                               |
 | **Conclusion**                | All                                  | Always included as a core chapter.                                                               |
 | **References / Works Cited / Bibliography** | All (style-dependent)             | Always included; file name and format depend on style (see guideline file).                      |
-| **Title Page**                | APA 7, Chicago/Turabian, ABNT        | Included if required by style or journal. Not used in MLA by default.                            |
-| **Abstract**                  | APA 7, ABNT                          | Included if required by style or journal.                                                        |
+| **Title Page**                | APA 7, Chicago/Turabian, ABNT, IEEE  | Included if required by style or journal. Not used in MLA by default.                            |
+| **Abstract**                  | APA 7, ABNT, IEEE                    | Included if required by style or journal.                                                        |
 | **Author Note**               | APA 7                                | Include if required by journal or instructor.                                                    |
 | **Works Cited**               | MLA                                  | Used instead of References/Bibliography.                                                         |
 | **Bibliography**              | Chicago/Turabian                     | Used instead of References/Works Cited.                                                          |
@@ -76,42 +119,23 @@ The following table summarizes how chapters are selected and included based on t
 | **Conflict of Interest Statement** | All (optional)                  | Include if required by journal or institution.                                                   |
 
 **Usage Guidelines:**
-- Core chapters are always included for every paper.
+- Core chapters are always included for every paper or essay.
 - Style-dependent chapters are included based on the selected writing style in `input_requirements.md`.
 - Optional and supplementary chapters can be added or removed by editing `input_requirements.md` or upon user request.
 - Each chapter template contains usage instructions to guide inclusion.
-- All chapter templates are maintained in the project root and referenced automatically or manually as needed.
+- All chapter templates are maintained in the `template/` folder and referenced automatically or manually as needed.
 
-*This table ensures that every academic paper is initialized with the appropriate structure for its style and requirements, while allowing for flexibility and user customization.*
-
----
-
-## How to Use the Copilot Instructions File
-
-- `.github/copilot-instructions.md` contains all operational, automation, and compliance rules for GitHub Copilot and other AI tools in this project.
-- **Do not edit or remove this file unless you are updating project-wide automation or workflow rules.**
-- All contributors and tools must follow the instructions in this file to ensure:
-  - Consistent file handling and automation
-  - Compliance with academic and architectural standards
-  - Proper use of writing styles and guideline files
-- If you are a user or contributor:
-  1. Review `.github/copilot-instructions.md` to understand how Copilot and automation will behave in this repository.
-  2. Specify the required writing style in `input_requirements.md` for each paper.
-  3. Reference the correct guideline file for your chosen style (see `GUIDELINES.md`).
-  4. If you add a new writing style or update workflow rules, update `.github/copilot-instructions.md` accordingly.
-- If you are using Copilot or another AI tool:
-  - Always check `.github/copilot-instructions.md` before performing any automated action or generating content.
-  - Ask clarifying questions if user instructions are missing, ambiguous, or contradictory.
-  - Never change or delete `input_requirements.md` if it already exists in a paper folder.
-  - Follow all file handling, workflow, and academic compliance rules as described there.
-- For more information on Copilot behavior and configuration, see the official documentation: https://docs.github.com/en/copilot
-
-- **For full operational and workflow details, see:**
-  - `.github/copilot-instructions.md` (automation, file handling, Copilot/AI rules)
-  - `WORKFLOW.md` (human workflow overview)
-  - `GUIDELINES.md` (index of academic writing and formatting standards)
-  - `DECISIONS.md` (architectural and strategic decisions)
+*This table ensures that every academic paper or essay is initialized with the appropriate structure for its style and requirements, while allowing for flexibility and user customization.*
 
 ---
 
-*This ensures all contributors and tools follow a consistent, high-quality workflow for academic research paper creation across multiple writing styles.*
+## Technical Implementation Details
+- All templates are now in the `template/` folder at the project root. Filenames do not include the word 'template'.
+- Example paper and essay folders (e.g., `test_paper_1`, `test_paper_2`, `test_paper_3`) are included for demonstration and testing.
+- Documentation files (`README.md`, `guidelines/GUIDELINES.md`, `.github/copilot-instructions.md`, `DECISIONS.md`, `LEARNINGS.md`, `CHECKLIST.md`) are up to date and cross-referenced.
+- The automation script (`assemble_and_convert.py`) is used for assembling and exporting documents.
+- The repository includes a `.gitignore`, `LICENSE`, `CONTRIBUTING.md`, and `CODE_OF_CONDUCT.md` for best practices and collaboration.
+
+---
+
+*For full workflow, compliance, and customization details, consult the Copilot instructions, guideline files in the `guidelines/` folder, and the `template/` folder.*

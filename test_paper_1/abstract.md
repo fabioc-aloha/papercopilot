@@ -1,0 +1,3 @@
+# Abstract
+
+COBOL, a foundational language in business computing, continues to power critical systems in finance, government, and industry well into the 21st century. This essay examines COBOL’s historical development, technological impact, and the persistent challenges of modernization. Through detailed case studies—including the Bank of New York Mellon, the IRS, and Delta Air Lines—the analysis reveals the risks and complexities of migrating legacy systems, the importance of institutional knowledge, and the need for incremental, well-documented transitions. The findings underscore that successful modernization requires a balance between innovation and preservation, with lessons that extend beyond COBOL to the broader landscape of legacy technology management.
