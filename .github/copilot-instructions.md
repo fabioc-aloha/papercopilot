@@ -70,6 +70,12 @@
      - Assemble the document in the canonical order specified by the style and user requirements, including all required and present optional sections.
      - After assembly, verify that all sections are present and in the correct order. If any are missing, notify the user and do not proceed to export.
      - The Python assembly script (`assemble_and_convert.py`) enforces these requirements and will halt with an error if any required chapter is missing.
+     - All required and optional chapters/sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist before assembly/export. The process halts with a clear error if any are missing.
+     - The Python script (`assemble_and_convert.py`) dynamically assembles the document in canonical order, always using the latest content from each section file.
+     - Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) are supported and should be used as documented in `LEARNINGS.md`.
+     - Always use a reference .docx template for consistent formatting. References and citations are handled via Pandoc filters, with support for further customization.
+     - If you update the Pandoc arguments or add new markdown features, update `LEARNINGS.md` accordingly.
+     - All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.
   7. **Final Validation:**
      - Double-check that all requirements from `input_requirements.md` are met.
      - Ensure no content from other folders is included.

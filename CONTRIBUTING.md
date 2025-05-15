@@ -22,6 +22,16 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 - **Templates & Styles:**
   - When adding new writing styles or chapter templates, update `GUIDELINES.md` and `.github/copilot-instructions.md`.
 
+## Academic Paper & Essay Workflow (2025-05-14 Update)
+
+- All required and optional chapters/sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist before export. The assembly script halts and prints a clear error if any are missing.
+- The Python script (`assemble_and_convert.py`) dynamically assembles the document in canonical order, always using the latest content from each section file.
+- Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) are supported for high-fidelity Word output.
+- Always use a reference .docx template for consistent formatting. References and citations are handled via Pandoc filters, with support for further customization.
+- See `LEARNINGS.md` for best practices and troubleshooting tips for Markdown-to-Word conversion.
+- If you update the Pandoc arguments or add new markdown features, update `LEARNINGS.md` accordingly.
+- Preview exports regularly and ensure all content is professional, fact-checked, and style-compliant.
+
 ## Code of Conduct
 
 All contributors must follow the [Code of Conduct](CODE_OF_CONDUCT.md).

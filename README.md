@@ -12,6 +12,28 @@ PaperCopilot streamlines the creation, management, and export of academic resear
 - Extensible template and guideline system (all templates are now in the `template/` folder, filenames do not include the word 'template')
 - Azure best practices integration for technical content
 
+## Academic Paper & Essay Workflow (2025-05-14 Update)
+
+This repository now supports a robust, automated workflow for academic paper and essay creation, supporting multiple citation styles (APA, IEEE, etc.), dynamic chapter/section selection, and advanced Markdown-to-Word export.
+
+### Key Features
+- **Strict Chapter Enforcement:** All required and optional chapters (as specified in `input_requirements.md` and the selected style) must exist before export. The assembly script halts and prints a clear error if any are missing.
+- **Dynamic Assembly:** The Python script (`assemble_and_convert.py`) dynamically detects paper/essay type, style, and required chapters, assembling the document in canonical order and always using the latest content from each section file.
+- **Advanced Markdown Support:** The export process supports advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) for high-fidelity Word output.
+- **Reference Formatting:** Always use a reference .docx template for consistent formatting. References and citations are handled via Pandoc filters, with support for further customization.
+- **Best Practices:** See `LEARNINGS.md` for best practices and troubleshooting tips for Markdown-to-Word conversion.
+
+### Contributor Guidelines
+- Use only supported markdown features (see `LEARNINGS.md`).
+- Preview exports regularly during drafting to ensure formatting fidelity.
+- If you update the Pandoc arguments or add new markdown features, update `LEARNINGS.md` accordingly.
+
+### How to Export
+1. Ensure all required and optional chapters are present in the target folder.
+2. Run: `python assemble_and_convert.py <paper_folder>`
+3. If any required chapter is missing, the script will halt and print an error.
+4. The assembled document will be exported as a .docx file in the same folder.
+
 ## User Instructions
 
 ### Key Commands and Workflow

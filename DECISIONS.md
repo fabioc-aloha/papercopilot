@@ -50,6 +50,14 @@ This file records all major architectural and strategic decisions for this proje
 - The user will then review the setup, add or modify actions in the checklist, and may request Copilot to generate the content for each section.
 - This ensures a repeatable, user-driven, and fully automated paper setup process, supporting user customization and workflow compliance.
 
+## 2025-05-14: Strict Chapter Enforcement & Advanced Markdown Support
+- Decision: All required and optional chapters/sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist before export. The assembly script halts and prints a clear error if any are missing.
+- The Python script (`assemble_and_convert.py`) dynamically assembles the document in canonical order, always using the latest content from each section file.
+- Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) are supported for high-fidelity Word output.
+- Always use a reference .docx template for consistent formatting. References and citations are handled via Pandoc filters, with support for further customization.
+- See `LEARNINGS.md` for best practices and troubleshooting tips for Markdown-to-Word conversion.
+- All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.
+
 ---
 
 *This file is the single source of truth for all architectural, strategic, and workflow decisions for this project. Update it with every major change to ensure clarity and traceability.*
