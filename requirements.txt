@@ -1,0 +1,13 @@
+# Python dependencies for this project
+pip>=25.1.1
+setuptools>=65.5.0
+pypandoc>=1.11
+markdown>=3.0
+# Pandoc must also be installed on your system: https://pandoc.org/installing.html
+#
+# For APA 7 Word export:
+# - The file apa_pandoc_reference.docx (in the project root) MUST be pre-set with:
+#   * Running head (short title, ALL CAPS, left header)
+#   * Page numbers (right header)
+#   * 1-inch margins, Times New Roman 12pt, double spacing, etc.
+# - The converter will use this template for all formatting in the exported .docx
