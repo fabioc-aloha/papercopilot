@@ -21,8 +21,8 @@ This project supports multiple academic writing and citation styles. Select the 
 ## Workflow & Export (2025-05-14 Update)
 
 - All required and optional sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist in the single `paper.md` file before export. The conversion scripts halt and print a clear error if any are missing.
-- The Python scripts (`convert_to_word.py`, `convert_to_pdf.py`) dynamically assemble and export the document from the single `paper.md` file, always using the latest content.
-- Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) are supported for high-fidelity Word and PDF output.
+- The Python script (`convert_to_word.py`) dynamically export the document from the single `paper.md` file, always using the latest content.
+- Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, LaTeX math, etc.) are supported for high-fidelity Word and PDF output.
 - Always use the appropriate style-specific Pandoc template for consistent formatting. References and citations are handled via Pandoc's built-in citeproc.
 - See `LEARNINGS.md` for best practices and troubleshooting tips for Markdown-to-Word/PDF conversion.
 - All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.

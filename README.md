@@ -1,6 +1,15 @@
 # PaperCopilot: Automated Academic Paper Workflow
 
+> **Purpose:** This project provides a fully automated, outline-driven, style-agnostic workflow for academic paper and essay creation, review, and export. It ensures compliance with professional academic standards, supports multiple citation styles, and streamlines collaboration between human and AI contributors.
+
 > **Note:** The outline-driven, style-agnostic workflow described here is the single source of truth for all academic paper and essay automation in this repository. All contributors (human and AI) must follow the same workflow, compliance, and file handling rules, as described in this README and in `.github/copilot-instructions.md`. For architectural or strategic changes, consult `DECISIONS.md`.
+
+## Core Workflow Principles
+- All contributors must follow the outline-driven, style-agnostic workflow described in `DECISIONS.md`.
+- Outlines in `outlines/` define only structure (section order/names/instructions). Style, citation, and formatting are enforced by the corresponding file in `guidelines/`.
+- Never hardcode style rules in outlines or templates.
+- Do not change `input_requirements.md` in any paper folder if it exists.
+- Document all major changes in `LEARNINGS.md` and `DECISIONS.md`.
 
 ## Template Folder Deprecation (May 2025)
 **All outlines in `outlines/` are now fully self-contained and do not require or reference any files from the `template/` folder.**
@@ -178,6 +187,12 @@ See the main instructions above for full workflow and compliance details.
     - Use style-specific Pandoc templates for PDF/Word export (see `templates/`).
     - Remove all instructional, outline, or placeholder text from the final output before submission or publication.
     - Document and maintain Pandoc command-line arguments and test cases for conversion reliability.
+
+
+## Page Breaks in Word
+
+- Page breaks in the Markdown source (e.g., `\pagebreak` or `\newpage`) are now converted to DOCX-compatible page breaks using Pandoc's raw XML (`<w:br w:type="page"/>`). This ensures that each major section starts on a new page in the generated Word document.
+- For PDF output, use Word's export feature to preserve these page breaks.
 
 ---
 

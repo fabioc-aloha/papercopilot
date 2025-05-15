@@ -192,22 +192,21 @@ def convert_to_word(paper_dir):
             print("Conversion halted. Please create the missing sections and re-run the script.")
             sys.exit(2)
 
-    # Preprocess: Replace '\\pagebreak' and '\pagebreak' with Pandoc's page break syntax
+    # Preprocess: Replace '\\pagebreak' and '\\newpage' with DOCX raw XML page break for best compatibility
     if single_file:
         with open(single_file, 'r', encoding='utf-8') as f:
             content = f.read()
-        # Pandoc recognizes '\newpage' or '<div style="page-break-after: always;"></div>' as page breaks
-        content = re.sub(r'\\+pagebreak', '\\newpage', content)
+        # Try DOCX raw XML page break for Pandoc
+        content = re.sub(r'\\+pagebreak|\\+newpage', '\n<w:br w:type="page"/>\n', content)
         # Write to a temp file for conversion
         temp_md = paper_dir / 'temp_paper_for_conversion.md'
         with open(temp_md, 'w', encoding='utf-8') as f:
             f.write(content)
-        output_md = temp_md
+        output_md = temp_md  # <-- Ensure we use the preprocessed file for conversion
 
     if single_file:
-        # Use the single file directly for conversion
-        output_md = single_file
-        print(f"Detected single-file paper: {single_file.name}. Proceeding with direct conversion.")
+        # Use the preprocessed file for conversion (if preprocessing was done)
+        print(f"Detected single-file paper: {output_md.name}. Proceeding with direct conversion.")
     else:
         # Concatenate sections dynamically in outline order
         with open(output_md, 'w', encoding='utf-8') as outfile:
@@ -236,7 +235,8 @@ def convert_to_word(paper_dir):
         '--highlight-style=pygments',
         '--citeproc',
         '--resource-path=.',
-        '--from=markdown+fenced_code_blocks+raw_html+table_captions+yaml_metadata_block+footnotes+definition_lists+pipe_tables+grid_tables+auto_identifiers+smart',
+        # Enable all advanced markdown features, including LaTeX math support
+        '--from=markdown+fenced_code_blocks+raw_html+table_captions+yaml_metadata_block+footnotes+definition_lists+pipe_tables+grid_tables+auto_identifiers+smart+tex_math_dollars+tex_math_single_backslash+tex_math_double_backslash',
     ]
 
     # Convert to docx using Pandoc

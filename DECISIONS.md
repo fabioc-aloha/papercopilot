@@ -18,17 +18,11 @@
 - For style and formatting, see `guidelines/GUIDELINES.md` and the appropriate style file.
 - This decision supersedes any previous documentation or workflow that contradicts the outline-driven, style-agnostic approach.
 
-### To-Do: Popular Outlines to Support
-- [ ] IMRaD Research Paper Outline (researchpaper_imrad.md)
-- [ ] Traditional Humanities Research Paper Outline (researchpaper_humanities.md)
-- [ ] Systematic Literature Review Outline (researchpaper_systematic_review.md)
-- [ ] Case Study Outline (researchpaper_case_study.md)
-- [ ] Argumentative Essay Outline (essay_argumentative.md)
-- [ ] Analytical Essay Outline (essay_analytical.md)
-- [ ] Reflective Essay Outline (essay_reflective.md)
-- [ ] Project/Capstone Report Outline (researchpaper_project.md)
-- [ ] Dissertation/Thesis Outline (researchpaper_dissertation.md)
-- [ ] Short Communication/Brief Report Outline (researchpaper_short_communication.md)
+## May 2025: PDF Export and Page Breaks
+- Decision: Remove direct Markdown-to-PDF script (`convert_to_pdf.py`).
+- Rationale: LaTeX dependency is heavy and not required for most users; Word export is more reliable for academic formatting.
+- Standard: All PDF exports must be performed via Microsoft Word's "Save as PDF" feature to ensure fidelity.
+- Page breaks in Markdown are now handled using Pandoc's DOCX raw XML for compatibility.
 
 ---
 
