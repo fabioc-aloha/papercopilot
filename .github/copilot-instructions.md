@@ -30,21 +30,7 @@
 - All contributors and tools must ensure compliance with these guidelines for every academic writing task.
 
 ## 5. Automated Research Paper Workflow
-- When initiating a new paper, create a single file (e.g., `paper.md`) in the target folder. This file must:
-  - Begin with the paper requirements (title, topic, goals, writing style, paper type, outline preference, and any additional requirements) at the top as a comment block.
-  - Include a properly formatted title page as the first section, followed by a page break (`\\pagebreak`).
-  - Place the abstract and keywords on their own page, followed by a page break.
-  - Present all main sections (introduction, methods, results, discussion, conclusion, etc.) in canonical order, each starting after the previous section (no extra page breaks unless required by style).
-  - Start the references section on a new page with a page break before it.
-  - Start the appendix (if present) on a new page with a page break before it.
-  - Use `\\pagebreak` to ensure correct pagination when converting to Word or PDF.
-  - Ensure all content is in a single file, not split into separate section files.
-- Use the selected outline and requirements to guide the initial structure and content of `paper.md`.
-- Do not break the paper into multiple files.
-- Continue to use `input_requirements.md` for requirements and `CHECKLIST.md` for workflow tracking.
-- When assembling or exporting, use only the content from the single paper file.
-- When initializing a new project or paper, determine if the requirements indicate an essay (argumentative, expository, analytical, etc.) rather than a research paper. If so, use the appropriate essay outline from `outlines/` (e.g., `essay_general.md`). Only include sections relevant to the essay format and the selected style.
-- All section instructions and content guidance are now embedded directly in the outlines in `outlines/`. The `template/` folder is deprecated and must not be referenced or used for file creation or content generation.
+- All content is generated and exported from a single, paginated `paper.md` file per project.
 - When generating or updating content, always use the structure and instructions from the selected outline in `outlines/` for the required section or chapter.
 - Automate file creation and updates in the background, without opening files in the editor, to prevent file locking or save conflicts.
 - The workflow for paper creation is as follows:
@@ -70,7 +56,7 @@
   6. **Assembly & Export:**
      - Assemble the document in the order specified by the selected outline.
      - Apply all formatting and citation rules from the selected guideline file in `guidelines/`.
-     - Export the assembled content as a `.docx` file in the same folder.
+     - Export the assembled content as a `.docx` or PDF file in the same folder using the conversion scripts (`convert_to_word.py`, `convert_to_pdf.py`).
      - If any required section is missing, issue a clear error and halt the assembly/export process until the missing content is created. Do not proceed to export with missing required sections.
      - Always use the latest content from the single paper file during assembly. Do not use cached, outdated, or placeholder content.
      - After assembly, verify that all sections are present and in the correct order. If any are missing, notify the user and do not proceed to export.
@@ -85,23 +71,23 @@
      - Use the provided section instructions in the outline to maintain structure, style, and formatting consistency.
      - Review and revise each section for clarity, coherence, and adherence to `GUIDELINES.md` before peer review.
   9. **Final Review:**
-     - Double-check that all formatting requirements (e.g., double spacing, margins, font, page numbers, running head, title page, abstract, section headings) are met in the final .docx.
+     - Double-check that all formatting requirements (e.g., double spacing, margins, font, page numbers, running head, title page, abstract, section headings) are met in the final .docx or PDF.
      - Ensure every in-text citation has a corresponding, fact-checked reference entry.
      - Use the `CHECKLIST.md` to verify all workflow and quality steps are completed before submission or publication.
   10. **Review Assembled Document for Instructional Text:**
-      - After assembling the paper, review the generated assembled_paper.md (and .docx) to ensure no instructional, outline, or formatting guideline text remains in the final document.
+      - After assembling the paper, review the generated output to ensure no instructional, outline, or formatting guideline text remains in the final document.
       - Remove any placeholder instructions, checklist items, or outline notes before submission or publication.
   11. **Finalize Checklist:**
       - At the end of the workflow, check off all items in `CHECKLIST.md` in the paper folder to indicate project completion. This ensures the project is marked as finished, even if additional tasks are added to the checklist in the future.
   12. **Configure Assembly/Export Script:**
-      - After initiating a new paper, verify that the assembly/export script (e.g., `assemble_and_convert.py`) is set to convert the content of the correct folder. Update the script arguments or configuration as needed to ensure the right paper folder is processed.
+      - After initiating a new paper, verify that the conversion scripts are set to process the correct folder. Update the script arguments or configuration as needed to ensure the right paper folder is processed.
   - When generating content for any section, do NOT produce generic placeholders, template text, or vague summaries. All generated content must:
     - Synthesize real, relevant, and up-to-date academic knowledge for the topic, using credible sources and following the requirements in `input_requirements.md`.
     - Be written in a professional, publication-ready style, fully compliant with the selected citation and formatting guidelines.
     - Include specific, fact-checked information, critical analysis, and in-text citations in the required style (e.g., APA 7).
     - Avoid using bracketed placeholders (e.g., [insert topic], [theme 1]) or instructional comments in the output.
     - Only use instructional or placeholder text if the user explicitly requests an outline, not full content.
-  - When you receive instructions from the user in the chat, you must ensure those instructions are incorporated into the Copilot instructions and workflow as appropriate. Update this file to reflect any new requirements, workflow changes, or user preferences provided in the chat, so that future automation and content generation fully align with user expectations.
+- When you receive instructions from the user in the chat, you must ensure those instructions are incorporated into the Copilot instructions and workflow as appropriate. Update this file to reflect any new requirements, workflow changes, or user preferences provided in the chat, so that future automation and content generation fully align with user expectations.
 
 ## 6. Outline Selection Logic (Replaces Chapter Template Selection)
 - Instead of hardcoding chapter or section selection based on style, the workflow now uses an **outline selection logic**:
@@ -139,7 +125,7 @@ This repository supports the following user commands for automated academic pape
 
 - **dive [section name]**: Provide a detailed breakdown, critique, or improvement suggestions for a specific section (e.g., "dive introduction").
 
-- **save to word**: Assemble all sections in canonical order (as specified by the selected outline) and export the paper as a `.docx` file, ensuring all formatting and style requirements are met.
+- **save to word**: Assemble all sections in canonical order (as specified by the selected outline) and export the paper as a `.docx` or PDF file, ensuring all formatting and style requirements are met.
 
 - **checklist**: Display or update the completion checklist for the paper folder, ensuring all workflow and quality steps are completed before submission or publication.
 
