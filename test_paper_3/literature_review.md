@@ -1,7 +1,0 @@
-# Literature Review
-
-The sonnet’s journey from its Italian origins to its prominent role in English literature is well documented by scholars and poets. Petrarch’s Italian sonnets established the form’s 14-line structure and thematic focus on love and introspection (Spiller 12). The form was later adapted by English poets, most notably William Shakespeare, whose 154 sonnets introduced new rhyme schemes and explored themes of time, beauty, and mortality (Shakespeare 64-65; Vendler 23). Helen Vendler’s analysis in The Art of Shakespeare’s Sonnets provides a comprehensive examination of Shakespeare’s technical mastery and emotional depth (Vendler 45-47).
-
-Critical perspectives also highlight the adaptability of the sonnet. Paul Oppenheimer traces the sonnet’s evolution through the Renaissance and into modern times, noting how poets such as Elizabeth Barrett Browning and Edna St. Vincent Millay used the form to address social and personal issues (Oppenheimer 102-104). Recent scholarship emphasizes the sonnet’s continued relevance, with contemporary poets experimenting with structure and subject matter while maintaining the form’s core characteristics (Fry 88).
-
-This body of literature demonstrates that the sonnet is both a historical artifact and a living, evolving form. Understanding its development and the contributions of key poets is essential for anyone seeking to write or analyze sonnets.

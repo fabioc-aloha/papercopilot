@@ -1,3 +1,0 @@
-# Methods
-
-This guide employs a close reading and comparative analysis of classic and contemporary sonnets to illustrate effective writing techniques. Key features such as meter, rhyme scheme, and volta (the thematic turn) are examined through annotated examples. The guide also draws on established literary criticism and instructional texts to outline step-by-step strategies for composing original sonnets. By combining theoretical insights with practical exercises, the methods presented here are designed to help writers internalize the conventions of the sonnet while encouraging creative experimentation.
