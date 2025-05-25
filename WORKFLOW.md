@@ -24,6 +24,15 @@
 - This approach ensures that all page breaks, formatting, and style requirements are preserved exactly as in the Word document.
 - For documents with complex mathematical formulas, a LaTeX output (`paper.latex`) is automatically generated alongside the Word document, which can be used with a LaTeX compiler for high-quality PDF generation.
 
+## Multiple Format Conversion (2025+)
+- The conversion script now generates multiple output files for each paper:
+  1. A Word document (`.docx`) generated from the Markdown source
+  2. A LaTeX document (`paper.latex`) for preserving complex formulas
+  3. A second Word document (with suffix `_latex.docx`) generated from the LaTeX source
+- This allows users to compare the different renderings and choose the most appropriate one based on their needs.
+- If mathematical formulas or complex formatting is critical, users can compare both Word outputs to determine which better preserves their content.
+- To generate all three files, simply run: `python convert_to_word.py <paper_folder>`
+
 ## Page Break Handling
 - Page breaks in Markdown (`\pagebreak` or `\newpage`) are automatically converted to DOCX-compatible page breaks using Pandoc's raw XML (`<w:br w:type="page"/>`).
 - This ensures that each major section starts on a new page in both the Word and exported PDF documents.
