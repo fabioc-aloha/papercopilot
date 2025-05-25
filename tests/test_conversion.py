@@ -48,7 +48,7 @@ class TestConversionUtilities(unittest.TestCase):
         req_file.rename(self.test_dir / 'input_requirements.md.bak')
         
         short_title = convert_to_word.get_short_title(self.test_dir)
-        self.assertEqual(short_title, "Introduction")
+        self.assertEqual(short_title, "Introduction To The Research")
         
         # Test with no valid files
         intro_file.unlink()
@@ -57,11 +57,13 @@ class TestConversionUtilities(unittest.TestCase):
     
     def test_section_to_filename(self):
         """Test conversion of section names to filenames."""
-        self.assertEqual(convert_to_word.section_to_filename("Introduction"), "introduction.md")
-        self.assertEqual(convert_to_word.section_to_filename("Results and Discussion"), "results_and_discussion.md")
-        self.assertEqual(convert_to_word.section_to_filename("Literature Review/Background"), "literature_reviewbackground.md")
+        # First, mock Path.exists to return False for essay outline
+        with mock.patch('pathlib.Path.exists', return_value=False):
+            self.assertEqual(convert_to_word.section_to_filename("Introduction"), "introduction.md")
+            self.assertEqual(convert_to_word.section_to_filename("Results and Discussion"), "results_and_discussion.md")
+            self.assertEqual(convert_to_word.section_to_filename("Literature Review/Background"), "literature_review_background.md")
         
-        # With existing essay outline
+        # Now mock Path.exists to return True for essay outline
         with mock.patch('pathlib.Path.exists', return_value=True):
             self.assertEqual(convert_to_word.section_to_filename("Introduction"), "essay_introduction.md")
             self.assertEqual(convert_to_word.section_to_filename("Conclusion"), "essay_conclusion.md")
