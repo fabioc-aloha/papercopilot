@@ -1,6 +1,6 @@
 # convert_to_word.py
 #
-# This script converts academic papers and essays from markdown to Word (.docx) using Pandoc.
+# This script converts academic papers and essays from markdown to Word (.docx) and LaTeX formats using Pandoc.
 #
 # Features:
 # - Supports both single-file (paper.md) and multi-file (section-per-chapter) workflows.
@@ -9,6 +9,7 @@
 # - Preprocesses custom page break tags (\\pagebreak) to Pandoc-compatible page breaks (\\newpage).
 # - Uses a reference .docx template for consistent APA/academic formatting.
 # - Enables advanced markdown features and citation processing.
+# - Supports LaTeX output for preserving complex formulas with paper.latex generation.
 #
 # Usage:
 #   python convert_to_word.py <paper_folder>
@@ -153,6 +154,98 @@ def get_pandoc_template_for_style(style):
     return None
 
 
+def convert_to_latex(paper_dir):
+    """
+    Convert a paper folder to a LaTeX (.latex) document.
+    - If paper.md exists, uses it directly (single-file workflow).
+    - Otherwise, assembles section files in outline order.
+    - Preserves LaTeX math formulas and complex equations.
+    - Outputs file as paper.latex in the paper directory.
+    - Halts and prints errors if required sections are missing (multi-file mode).
+    """
+    paper_dir = Path(paper_dir)
+    short_title = get_short_title(paper_dir)
+    output_md = paper_dir / 'assembled_paper.md'
+    output_latex = paper_dir / 'paper.latex'
+
+    # Select outline and parse for section order
+    outline_path = detect_outline_file(paper_dir)
+    ordered_sections, optional_sections = parse_outline(outline_path)
+    section_files = [section_to_filename(s) for s in ordered_sections]
+    optional_files = [section_to_filename(s) for s in optional_sections]
+
+    # --- Single-file support ---
+    single_file = find_single_file(paper_dir)
+    # If using single-file, skip section presence check
+    if not single_file:
+        # Check for missing required sections before conversion
+        missing = []
+        for fname in section_files:
+            fpath = paper_dir / fname
+            if not fpath.exists():
+                missing.append(fname)
+        if missing:
+            print(f"\nERROR: The following required sections are missing and must be created before conversion: {', '.join(missing)}\n")
+            print("Conversion halted. Please create the missing sections and re-run the script.")
+            sys.exit(2)
+
+    # Preprocess: Replace '\\pagebreak' and '\\newpage' for LaTeX compatibility
+    if single_file:
+        with open(single_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        # Write to a temp file for conversion
+        temp_md = paper_dir / 'temp_paper_for_conversion.md'
+        with open(temp_md, 'w', encoding='utf-8') as f:
+            f.write(content)
+        output_md = temp_md  # <-- Ensure we use the preprocessed file for conversion
+
+    if single_file:
+        # Use the preprocessed file for conversion (if preprocessing was done)
+        print(f"Detected single-file paper: {output_md.name}. Proceeding with direct conversion.")
+    else:
+        # Concatenate sections dynamically in outline order
+        with open(output_md, 'w', encoding='utf-8') as outfile:
+            for fname in section_files:
+                fpath = paper_dir / fname
+                with open(fpath, 'r', encoding='utf-8') as infile:
+                    outfile.write(infile.read())
+                    outfile.write('\n\n')
+            # Optionally include present optional sections
+            for fname in optional_files:
+                fpath = paper_dir / fname
+                if fpath.exists():
+                    with open(fpath, 'r', encoding='utf-8') as infile:
+                        outfile.write(infile.read())
+                        outfile.write('\n\n')
+
+    # Configure LaTeX-specific arguments for Pandoc
+    extra_args = [
+        '--standalone',
+        '--wrap=auto',
+        '--extract-media=.',
+        '--markdown-headings=atx',
+        '--columns=80',
+        '--shift-heading-level-by=0',
+        '--highlight-style=pygments',
+        '--citeproc',
+        '--resource-path=.',
+        # Enable all advanced markdown features, including LaTeX math support
+        '--from=markdown+fenced_code_blocks+raw_html+table_captions+yaml_metadata_block+footnotes+definition_lists+pipe_tables+grid_tables+auto_identifiers+smart+tex_math_dollars+tex_math_single_backslash+tex_math_double_backslash',
+    ]
+
+    # Convert to LaTeX using Pandoc
+    try:
+        pypandoc.convert_file(
+            str(output_md),
+            'latex',
+            outputfile=str(output_latex),
+            extra_args=extra_args
+        )
+        print(f"Successfully created {output_latex}")
+    except Exception as e:
+        print(f"Error during conversion: {e}")
+
+
 def convert_to_word(paper_dir):
     """
     Convert a paper folder to a Word (.docx) document.
@@ -255,4 +348,8 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: python convert_to_word.py <paper_folder>")
         sys.exit(1)
-    convert_to_word(sys.argv[1])
+    
+    paper_dir = sys.argv[1]
+    convert_to_word(paper_dir)
+    # Also generate LaTeX output for preserving complex formulas
+    convert_to_latex(paper_dir)
