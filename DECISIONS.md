@@ -24,6 +24,12 @@
 - Standard: All PDF exports must be performed via Microsoft Word's "Save as PDF" feature to ensure fidelity.
 - Page breaks in Markdown are now handled using Pandoc's DOCX raw XML for compatibility.
 
+## June 2025: Multiple Document Format Conversions
+- Decision: Added functionality to convert both Markdown and LaTeX files to separate .docx outputs.
+- Rationale: Different rendering engines may handle complex content (like mathematical formulas) differently. 
+- Implementation: The `convert_to_word.py` script now generates three files: a .docx from Markdown, a .latex file, and a second .docx from the LaTeX source.
+- Standard: Users should compare both Word documents to determine which better preserves their specific content and formatting requirements.
+
 ---
 
 *This file is the single source of truth for all architectural, strategic, and workflow decisions for this project. Update it with every major change to ensure clarity and traceability.*

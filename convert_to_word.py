@@ -248,7 +248,7 @@ def convert_to_latex(paper_dir):
 
 def convert_to_word(paper_dir):
     """
-    Convert a paper folder to a Word (.docx) document.
+    Convert a paper folder to a Word (.docx) document from Markdown.
     - If paper.md exists, uses it directly (single-file workflow).
     - Otherwise, assembles section files in outline order.
     - Preprocesses custom page break tags (\\pagebreak) to Pandoc-compatible page breaks (\\newpage).
@@ -344,6 +344,55 @@ def convert_to_word(paper_dir):
     except Exception as e:
         print(f"Error during conversion: {e}")
 
+
+def convert_latex_to_word(paper_dir):
+    """
+    Convert a LaTeX (.latex) file to a Word (.docx) document.
+    - Uses the paper.latex file in the paper directory.
+    - Outputs a distinct file as paper_latex.docx to differentiate from the Markdown-derived .docx.
+    - Preserves formatting from LaTeX as accurately as possible.
+    """
+    paper_dir = Path(paper_dir)
+    short_title = get_short_title(paper_dir)
+    input_latex = paper_dir / 'paper.latex'
+    output_docx = paper_dir / f'{short_title}_latex.docx'
+    reference_docx = REFERENCE_DOCX
+
+    # Check if LaTeX file exists
+    if not input_latex.exists():
+        print(f"\nError: LaTeX file {input_latex} not found. Please run convert_to_latex first.")
+        return
+
+    # Update the running head in the template
+    update_reference_docx_running_head(reference_docx, short_title)
+
+    # Configure arguments for Pandoc
+    extra_args = [
+        '--standalone',
+        '--wrap=auto',
+        '--extract-media=.',
+        '--columns=80',
+        '--shift-heading-level-by=0',
+        '--highlight-style=pygments',
+        '--citeproc',
+        '--resource-path=.',
+        # Reference docx for formatting
+        f'--reference-doc={reference_docx}',
+    ]
+
+    # Convert LaTeX to docx using Pandoc
+    try:
+        pypandoc.convert_file(
+            str(input_latex),
+            'docx',
+            outputfile=str(output_docx),
+            extra_args=extra_args
+        )
+        print(f"Successfully created {output_docx} from LaTeX source")
+    except Exception as e:
+        print(f"Error during LaTeX to Word conversion: {e}")
+
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: python convert_to_word.py <paper_folder>")
@@ -353,3 +402,5 @@ if __name__ == '__main__':
     convert_to_word(paper_dir)
     # Also generate LaTeX output for preserving complex formulas
     convert_to_latex(paper_dir)
+    # Generate Word document from LaTeX for comparison
+    convert_latex_to_word(paper_dir)

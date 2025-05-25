@@ -177,13 +177,14 @@ See the main instructions above for full workflow and compliance details.
 
 ## Technical Implementation Details
 - Documentation files (`README.md`, `guidelines/GUIDELINES.md`, `.github/copilot-instructions.md`, `DECISIONS.md`, `LEARNINGS.md`, `CHECKLIST.md`) are up to date and cross-referenced.
-- The conversion scripts (`convert_to_word.py`, `convert_to_pdf.py`) are used for converting documents to Word and PDF formats, respectively.
+- The conversion script (`convert_to_word.py`) is used for converting documents to Word and LaTeX formats, with additional functionality to convert LaTeX to Word.
 - The repository includes a `.gitignore`, `LICENSE`, `CONTRIBUTING.md`, and `CODE_OF_CONDUCT.md` for best practices and collaboration.
 - **Version 2 Conversion Features:**
   - The conversion scripts:
     - Use outline-driven, style-agnostic logic: structure is determined by the selected outline in `outlines/`, and all style/citation/formatting rules are enforced by the corresponding file in `guidelines/`.
     - Always use the latest content from the single `paper.md` file for export; never use cached or outdated content.
     - Strictly enforce the presence of all required sections before conversion; halt and issue a clear error if any are missing.
+    - Generate multiple output formats (Markdown→.docx, Markdown→.latex, and LaTeX→.docx) for comparison.
     - Support advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, etc.) for high-fidelity Word and PDF output.
     - Use style-specific Pandoc templates for PDF/Word export (see `templates/`).
     - Remove all instructional, outline, or placeholder text from the final output before submission or publication.
@@ -194,6 +195,16 @@ See the main instructions above for full workflow and compliance details.
 
 - Page breaks in the Markdown source (e.g., `\pagebreak` or `\newpage`) are now converted to DOCX-compatible page breaks using Pandoc's raw XML (`<w:br w:type="page"/>`). This ensures that each major section starts on a new page in the generated Word document.
 - For PDF output, use Word's export feature to preserve these page breaks.
+
+## Multiple Document Format Conversions
+
+- The system now generates three separate output files for each paper:
+  1. A Word document (`.docx`) generated from the Markdown source, with filename based on the short title.
+  2. A LaTeX document (`paper.latex`) preserving complex mathematical formulas.
+  3. A second Word document (with suffix `_latex.docx`) generated from the LaTeX source.
+- This allows users to compare the different renderings and choose the one that best preserves formatting.
+- To generate these files, simply run the conversion script as usual: `python convert_to_word.py <paper_folder>`
+- Compare the two `.docx` files to identify any differences in formatting, especially for complex mathematical formulas.
 
 ---
 
