@@ -1,6 +1,7 @@
 ![PaperCopilot Banner](banner.png)
 
 # PaperCopilot: AI-Powered Academic Writing Assistant
+**Version 0.9.1 Golden**
 
 > **Write Better Papers Faster**: PaperCopilot is your intelligent research assistant that helps you create high-quality academic papers through natural language commands in VS Code. No coding required—just tell it what you need.
 
