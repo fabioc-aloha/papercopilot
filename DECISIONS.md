@@ -24,6 +24,34 @@
 - Standard: All PDF exports must be performed via Microsoft Word's "Save as PDF" feature to ensure fidelity.
 - Page breaks in Markdown are now handled using Pandoc's DOCX raw XML for compatibility.
 
+## 2025-05-15: Page Break Handling Reliability Update
+- Improved the regex in `convert_to_word.py` to robustly match all variants of `\\pagebreak` and `\\newpage` (including extra spaces and case differences) and convert them to DOCX raw XML page breaks.
+- Updated guidelines to instruct users to insert a line with `\\pagebreak` (or `\\newpage`) after each major section in markdown for correct pagination in Word export.
+
+# Decision: Paper Content vs. Documentation of Workflow/Methodology
+
+**Date:** 2025-05-19
+
+**Decision:**
+
+Workflow, methodology, and template structure details (such as the use of recursive, template-driven case studies or section templates) are to be documented only in repository documentation (e.g., copilot-instructions.md, README.md, WORKFLOW.md, DECISIONS.md). These details must not be included, referenced, or discussed in the academic paper itself (e.g., paper.md, abstract, introduction, or conclusion). The academic paper should focus solely on its substantive academic content, analysis, and findings, without reference to the internal workflow or automation processes used to generate or structure the content.
+
+**Rationale:**
+- Academic standards require that papers present only substantive research, analysis, and findings, not internal workflow or automation details.
+- Workflow and template requirements are for internal consistency, quality control, and automation, and are not relevant to the reader or reviewers of the academic paper.
+- This separation ensures clarity, professionalism, and compliance with academic publishing norms.
+
+**Action Items:**
+- Updated copilot-instructions.md to explicitly prohibit inclusion of workflow/methodology/template details in academic papers.
+- All contributors must review and comply with this policy.
+- Review existing and future papers to ensure compliance.
+
+**Related Files Updated:**
+- .github/copilot-instructions.md
+
+**Related Issues:**
+- User request, 2025-05-19
+
 ---
 
 *This file is the single source of truth for all architectural, strategic, and workflow decisions for this project. Update it with every major change to ensure clarity and traceability.*

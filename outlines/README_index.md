@@ -13,6 +13,10 @@ This index lists the curated outlines available in the `outlines/` folder for us
 - Copilot and contributors should select the most appropriate outline based on the requirements in `input_requirements.md`.
 - If a more specific outline is needed (e.g., for a particular topic or journal), create a new outline file and add it to this index.
 
+## Single-File Workflow Notice
+
+Include all references in the References section of `paper.md`.
+
 ---
 
 *This index should be kept up to date as new outlines are added to the project.*

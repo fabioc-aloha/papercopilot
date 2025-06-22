@@ -4,6 +4,8 @@ This document provides authoritative rules for writing, structuring, and formatt
 
 ## Structure
 - Use a clear, logical structure: introduction, body, conclusion.
+- Each major section should begin on a new page in the final export (handled by the export script).
+- After each major section in your markdown, insert a line with `\\pagebreak` (or `\\newpage`) to ensure a page break in the exported Word document.
 - Include a Works Cited page at the end.
 - No title page required unless specified; include your name, instructor, course, and date on the first page (left-aligned).
 
@@ -28,6 +30,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 - Use Times New Roman 12pt font.
 - Indent new paragraphs one-half inch.
 - Include page numbers in the header, right-aligned, with your last name.
+- To force a page break in the exported Word document, insert a line with `\\pagebreak` (or `\\newpage`) after any section that should start on a new page.
 
 ## Additional Requirements
 - Fact-check all statements and support them with credible, up-to-date sources.

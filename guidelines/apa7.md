@@ -5,6 +5,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 ## Structure
 - Use the IMRaD format (Introduction, Methods, Results, and Discussion) unless otherwise specified.
 - Each major section should begin on a new page in the final export (handled by the export script).
+- After each major section in your markdown, insert a line with `\\pagebreak` (or `\\newpage`) to ensure a page break in the exported Word document.
 - Include a title page and abstract, each on a separate page.
 
 ## In-Text Citations
@@ -14,15 +15,15 @@ This document provides authoritative rules for writing, structuring, and formatt
 - For works with three or more authors, use the first author followed by "et al." after the first citation.
 
 ## References
-- All sources cited in the text must appear in the reference list, and vice versa.
-- List references alphabetically by author surname.
+- List all sources cited in the text in the References section.
+- Do not use bullet points or numbering; each entry should be a separate paragraph.
+- List entries in strict alphabetical order by author surname.
 - Use a hanging indent for each reference entry (handled in Word export).
-- Format references as follows:
-  - Author, A. A., & Author, B. B. (Year). Title of the article. *Journal Name*, volume(issue), page range. https://doi.org/xxx
-  - Group Author. (Year). Title of report. https://www.example.com
-- Journal and book titles are italicized (handled in Word export).
-- Use sentence case for article, book, and report titles.
-- Include DOIs or URLs when available.
+- Italicize book and journal titles; use sentence case for titles.
+- Double-space all entries (handled by Word export).
+- Example:
+  
+  Smith, J. A. (2020). *Title of the book in sentence case* (2nd ed.). Publisher.
 
 ## Formatting
 - Double-space all text, including references.
@@ -31,6 +32,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 - Include page numbers in the top right corner.
 - Include a running head on the title page and all subsequent pages.
 - Use APA 7 section headings (centered, bold, title case for main sections).
+- To force a page break in the exported Word document, insert a line with `\\pagebreak` (or `\\newpage`) after any section that should start on a new page.
 
 ## Additional Requirements
 - Fact-check all statements and support them with credible, up-to-date sources.

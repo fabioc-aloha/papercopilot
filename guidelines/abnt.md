@@ -6,6 +6,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 - Use a logical structure: cover page, abstract (resumo), summary (sumário), introduction, development (desenvolvimento), conclusion, references (referências), and appendices if needed.
 - Each section should start on a new page in the final export.
 - The cover page must include the institution, author, title, city, and year (centered, uppercase).
+- After each major section in your markdown, insert a line with `\\pagebreak` (or `\\newpage`) to ensure a page break in the exported Word document.
 
 ## In-Text Citations
 - Use the author-date system: (SOBRENOME, year, page) for direct quotes, e.g., (SILVA, 2020, p. 15).
@@ -32,6 +33,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 - Paragraphs should be indented 1.25 cm.
 - Page numbers in the upper right corner, starting from the introduction.
 - Section headings in bold, uppercase, and left-aligned.
+- To force a page break in the exported Word document, insert a line with `\\pagebreak` (or `\\newpage`) after any section that should start on a new page.
 
 ## Additional Requirements
 - Fact-check all statements and support them with credible, up-to-date sources.

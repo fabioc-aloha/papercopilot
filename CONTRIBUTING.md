@@ -22,6 +22,11 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 - **Templates & Styles:**
   - When adding new writing styles or chapter templates, update `GUIDELINES.md` and `.github/copilot-instructions.md`.
 
+## Academic Paper Contributions: Single-File Requirement
+
+- All new and updated papers must use a single-file approach: all content and references in `paper.md`.
+- When updating outlines, checklists, or requirements, ensure they specify the single-file workflow.
+
 ## Academic Paper & Essay Workflow (2025-05-14 Update)
 
 - All required and optional chapters/sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist before export. The assembly script halts and prints a clear error if any are missing.
@@ -31,6 +36,12 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 - See `LEARNINGS.md` for best practices and troubleshooting tips for Markdown-to-Word conversion.
 - If you update the Pandoc arguments or add new markdown features, update `LEARNINGS.md` accordingly.
 - Preview exports regularly and ensure all content is professional, fact-checked, and style-compliant.
+
+## Recursive Section Structure for Case Studies and Similar Sections
+
+If your paper includes multiple case studies (or other repeated section types), each section should be structured using the relevant template and guidelines (e.g., Title, Description, Analysis, Discussion, Conclusion for case studies). This ensures consistency and standards compliance for all repeated sections.
+
+When contributing or reviewing outlines, always check for sections that represent repeated units (such as case studies, experiments, or profiles) and apply the appropriate template recursively within those sections.
 
 ## Code of Conduct
 

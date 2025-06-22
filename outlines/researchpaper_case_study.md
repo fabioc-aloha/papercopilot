@@ -61,11 +61,15 @@ Date
 <!-- Write the conclusion here. Summarize key findings, limitations, and recommendations. Use the required style. -->
 ```
 
+---
+**If your paper includes multiple case studies as sections, structure each case study section using the templates and guidelines above (Title, Description, Analysis, Discussion, Conclusion, etc.) for each case.**
+---
+
 ### 8. References
 ```
 # References
 
-<!-- Add all references cited in the paper here. Format each entry in the required style. -->
+<!-- Add all references cited in the paper here. Format each entry in the required style. See guidelines/apa7.md, guidelines/chicago.md, etc. for details. -->
 ```
 
 ### 9. Appendix (optional)

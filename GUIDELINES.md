@@ -1,32 +1,72 @@
 # Academic Writing Guidelines Index
 
-This project supports multiple academic writing and citation styles. Select the appropriate guideline file for your paper:
+This project supports multiple academic writing and citation styles. Each style has specific rules for structure, citations, references, and formatting.
 
-| Style      | Guideline File              | Typical Use Cases                                      |
-|------------|----------------------------|--------------------------------------------------------|
-| ABNT       | GUIDELINES_ABNT.md         | Academic work in Brazil                                |
-| APA 7      | GUIDELINES_APA7.md         | Social sciences, health sciences                       |
-| Chicago    | GUIDELINES_CHICAGO.md      | Humanities, some social sciences                       |
-| Harvard    | GUIDELINES_HARVARD.md      | Social sciences, business, STEM                        |
-| IEEE       | GUIDELINES_IEEE.md         | Engineering, computer science, technical fields        |
-| MLA        | GUIDELINES_MLA.md          | Language, literature, humanities                       |
-| Turabian   | GUIDELINES_TURABIAN.md     | Student papers in the US (based on Chicago style)      |
-| Vancouver  | GUIDELINES_VANCOUVER.md    | Medical, scientific research                           |
+## Style Selection Guide
 
-## How to Use
-- Always follow the guideline file that matches your required writing style.
-- If unsure which style to use, consult your instructor, supervisor, or project lead.
-- All contributors and tools (including Copilot) must reference the correct guideline file for every academic writing task.
+| Style      | Guideline File              | Primary Use Cases                                    |
+|------------|----------------------------|------------------------------------------------------|
+| **APA 7**  | `guidelines/apa7.md`       | Psychology, social sciences, health sciences        |
+| **IEEE**   | `guidelines/ieee.md`       | Engineering, computer science, technical fields     |
+| **MLA**    | `guidelines/mla.md`        | Literature, humanities, language studies             |
+| **Chicago**| `guidelines/chicago.md`    | History, literature, arts, some social sciences     |
+| **Harvard**| `guidelines/harvard.md`    | Business, social sciences, STEM fields              |
+| **Vancouver** | `guidelines/vancouver.md` | Medical research, life sciences                    |
+| **Turabian** | `guidelines/turabian.md`  | Student papers (based on Chicago style)            |
+| **ABNT**   | `guidelines/abnt.md`       | Brazilian academic standards                         |
 
-## Workflow & Export (2025-05-14 Update)
+## Usage Instructions
 
-- All required and optional sections (as specified in `input_requirements.md` and the canonical order for the selected style) must exist in the single `paper.md` file before export. The conversion scripts halt and print a clear error if any are missing.
-- The Python script (`convert_to_word.py`) dynamically export the document from the single `paper.md` file, always using the latest content.
-- Advanced markdown features (fenced code blocks, tables, raw HTML, footnotes, definition lists, smart punctuation, LaTeX math, etc.) are supported for high-fidelity Word and PDF output.
-- Always use the appropriate style-specific Pandoc template for consistent formatting. References and citations are handled via Pandoc's built-in citeproc.
-- See `LEARNINGS.md` for best practices and troubleshooting tips for Markdown-to-Word/PDF conversion.
-- All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.
+### For Writers
+1. **Identify your required style** from your institution, journal, or assignment requirements
+2. **Reference the appropriate guideline file** throughout your writing process
+3. **Follow all formatting rules** specified in your selected style guide
+4. **Use the style consistently** throughout your entire document
+
+### For AI/Automation
+- Always reference the correct guideline file for every academic writing task
+- Never mix style rules from different guidelines
+- Ensure all citations, references, and formatting match the selected style
+- Validate compliance before finalizing any document
+
+## Export & Quality Control
+
+### Pre-Export Validation
+- All required sections must exist in `paper.md` before export
+- References must be complete and properly formatted
+- In-text citations must have corresponding reference entries
+- Checklist items must be completed
+
+### Export Process
+- Uses single `paper.md` file as source
+- Applies style-specific Pandoc templates
+- Converts to high-fidelity Word format
+- Supports advanced Markdown features (tables, code blocks, footnotes)
+- Maintains proper formatting and page breaks
+
+### Quality Standards
+- Professional academic tone throughout
+- Fact-checked content with verified sources
+- Proper academic structure and flow
+- Style-consistent formatting and citations
+- Publication-ready output
 
 ---
 
-*For detailed rules, see the linked guideline files above. Update this index as new styles are added.*
+## Troubleshooting
+
+### Common Issues
+- **Missing sections**: Check outline requirements and ensure all sections exist
+- **Citation errors**: Verify all in-text citations have reference entries
+- **Formatting problems**: Confirm you're using the correct style guideline
+- **Export failures**: Ensure all required files exist and are properly formatted
+
+### Best Practices
+- Always specify the writing style in `input_requirements.md`
+- Follow the workflow steps in order
+- Complete peer review before finalizing
+- Double-check all requirements before submission
+
+---
+
+*For detailed rules and examples, see the individual guideline files listed above.*

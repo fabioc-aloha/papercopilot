@@ -5,6 +5,8 @@ This document provides authoritative rules for writing, structuring, and formatt
 ## Structure
 - Use a logical structure: title page, contents, introduction, body, conclusion, bibliography.
 - Title page should include the paper title, your name, course, and date (centered, double-spaced).
+- Each major section should begin on a new page in the final export (handled by the export script).
+- After each major section in your markdown, insert a line with `\\pagebreak` (or `\\newpage`) to ensure a page break in the exported Word document.
 
 ## In-Text Citations
 - Use footnotes or endnotes for citations (not parenthetical author-date style).
@@ -30,6 +32,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 - Include page numbers in the header or footer.
 - Indent new paragraphs.
 - Use section headings as appropriate for your discipline.
+- To force a page break in the exported Word document, insert a line with `\\pagebreak` (or `\\newpage`) after any section that should start on a new page.
 
 ## Additional Requirements
 - Fact-check all statements and support them with credible, up-to-date sources.

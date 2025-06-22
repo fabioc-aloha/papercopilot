@@ -27,3 +27,7 @@
 
 **Special Instructions or Notes:**
 > (Add any assignment-specific requirements, instructor notes, or preferences here)
+
+---
+
+- All references and citations must be included in the References section of `paper.md`.

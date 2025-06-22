@@ -5,6 +5,8 @@ This document provides authoritative rules for writing, structuring, and formatt
 ## Structure
 - Use a logical structure: introduction, methods, results, discussion, conclusion, and references.
 - Title page may be required (check your institution's requirements).
+- Each major section should begin on a new page in the final export (handled by the export script).
+- After each major section in your markdown, insert a line with `\\pagebreak` (or `\\newpage`) to ensure a page break in the exported Word document.
 
 ## In-Text Citations
 - Use numbered citations in the order of appearance: [1], [2], etc.
@@ -25,6 +27,7 @@ This document provides authoritative rules for writing, structuring, and formatt
 - Use 1-inch margins on all sides.
 - Use Times New Roman 12pt or Arial 11pt font.
 - Include page numbers in the header or footer.
+- To force a page break in the exported Word document, insert a line with `\\pagebreak` (or `\\newpage`) after any section that should start on a new page.
 
 ## Additional Requirements
 - Fact-check all statements and support them with credible, up-to-date sources.

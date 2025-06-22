@@ -1,5 +1,3 @@
-# References
+<!-- Add all sources cited in the essay here. Format each entry in APA 7 style. No bullet points or numbering. List entries in strict alphabetical order by author surname. -->
 
-- Gravetter, F. J., & Wallnau, L. B. (2017). Statistics for the Behavioral Sciences (10th ed.). Cengage Learning.
-- Urdan, T. C. (2016). Statistics in Plain English (4th ed.). Routledge.
-- American Psychological Association. (2020). Publication Manual of the American Psychological Association (7th ed.).
+# This file is now deprecated. All references must be included in the References section of paper.md. Do not use this file for new papers. See updated workflow and documentation.

@@ -66,7 +66,7 @@ Date
 ### References
 # References
 
-<!-- Add all references cited in the essay here. Format each entry in the required style. -->
+<!-- Add all references cited in the paper here. Format each entry in the required style. -->
 
 ---
 

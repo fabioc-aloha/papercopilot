@@ -1,12 +1,12 @@
 # Checklist for test_paper_1
 
-- [x] input_requirements.md created and reviewed
-- [x] Outline selected and followed
-- [x] All required sections drafted in paper.md
-- [x] All formulas included in LaTeX math notation
-- [x] Real-world examples provided for each measure
-- [x] References consolidated in references.md
-- [x] Writing style: APA 7 followed
-- [x] Peer review and quality check
+- [ ] input_requirements.md created and reviewed
+- [ ] Outline created and followed
+- [ ] All required sections drafted in paper.md
+- [ ] All references included in the References section of paper.md
+- [ ] Writing style: APA 7 followed
+- [ ] Peer review and quality check
 - [ ] Final assembly and export to .docx
 - [ ] Final formatting and reference check
+- [ ] If the paper includes multiple case studies or similar repeated sections, each is structured using the appropriate template and guidelines (recursive section structure)
+- [ ] **Final Submission:** Paper is confirmed ready for submission or export, and the final submission step has been performed as required by the workflow or repository guidelines

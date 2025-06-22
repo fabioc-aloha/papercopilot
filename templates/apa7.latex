@@ -13,6 +13,12 @@
 \usepackage{natbib}
 \bibliographystyle{apa}
 
+% Ensure references section uses hanging indent, double-spacing, and no bullet points
+\usepackage{setspace}
+\setstretch{2}
+\usepackage{etoolbox}
+\AtBeginEnvironment{thebibliography}{\setlength{\itemindent}{-0.5in}\setlength{\leftskip}{0.5in}\setlength{\parskip}{0pt}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}}
+
 $if(title)$
   \title{$title$}
 $endif$

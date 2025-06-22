@@ -65,7 +65,7 @@ Date
 ```
 # References
 
-<!-- Add all references cited in the paper here. Format each entry in the required style. -->
+<!-- Add all references cited in the paper here. Format each entry in the required style. See guidelines/apa7.md, guidelines/chicago.md, etc. for details. -->
 ```
 
 ### 9. Appendix (optional)

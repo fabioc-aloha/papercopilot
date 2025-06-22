@@ -196,8 +196,8 @@ def convert_to_word(paper_dir):
     if single_file:
         with open(single_file, 'r', encoding='utf-8') as f:
             content = f.read()
-        # Try DOCX raw XML page break for Pandoc
-        content = re.sub(r'\\+pagebreak|\\+newpage', '\n<w:br w:type="page"/>\n', content)
+        # Try DOCX raw XML page break for Pandoc (robust to spaces/case)
+        content = re.sub(r'\\+\s*(pagebreak|newpage)\s*', '\n<w:br w:type="page"/>\n', content, flags=re.IGNORECASE)
         # Write to a temp file for conversion
         temp_md = paper_dir / 'temp_paper_for_conversion.md'
         with open(temp_md, 'w', encoding='utf-8') as f:
