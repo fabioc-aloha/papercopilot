@@ -39,10 +39,11 @@ This project supports multiple academic writing and citation styles. Each style 
 
 ### Export Process
 - Uses single `paper.md` file as source
-- Applies style-specific Pandoc templates
+- Clean, simple Word document conversion
 - Converts to high-fidelity Word format
 - Supports advanced Markdown features (tables, code blocks, footnotes)
 - Maintains proper formatting and page breaks
+- Command: `python convert_to_word.py <paper_folder>`
 
 ### Quality Standards
 - Professional academic tone throughout

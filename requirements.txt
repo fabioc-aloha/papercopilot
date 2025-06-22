@@ -1,21 +1,16 @@
-# Python dependencies for PaperCopilot
-# Core packages
-markdown>=3.0,<4.0
-pypandoc>=1.11,<2.0
-python-docx>=0.8.10  # For manipulating Word documents
+# Python dependencies for PaperCopilot Document Converter
 
-# Development tools
-pytest>=7.0.0  # For running tests
-pytest-cov>=4.0.0  # For test coverage reports
+# Core conversion packages
+pypandoc>=1.11,<2.0      # Pandoc interface for document conversion
+python-docx>=0.8.10      # Optional: For Word document template manipulation
 
-# Pandoc must also be installed on your system: https://pandoc.org/installing.html
-# - Windows: Use the installer from the Pandoc website
-# - macOS: brew install pandoc
-# - Linux: apt-get install pandoc or equivalent for your distribution
-
-# For APA 7 Word export:
-# - The file apa_pandoc_reference.docx (in the project root) MUST be pre-set with:
-#   * Running head (short title, ALL CAPS, left header)
-#   * Page numbers (right header)
-#   * 1-inch margins, Times New Roman 12pt, double spacing, etc.
-# - The converter will use this template for all formatting in the exported .docx
+# System Requirements:
+# - Pandoc must be installed on your system: https://pandoc.org/installing.html
+#   * Windows: Use the installer from the Pandoc website
+#   * macOS: brew install pandoc
+#   * Linux: apt-get install pandoc or equivalent for your distribution
+#
+# - Word reference documents (in templates/) provide style-specific formatting:
+#   * Each citation style has its own Word reference document
+#   * Automatic fallback to APA if style-specific template not found
+#   * Pre-configured with proper formatting (margins, fonts, headers, etc.)

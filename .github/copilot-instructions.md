@@ -1,6 +1,6 @@
 # GitHub Copilot Instructions for This Repository
 
-> **Note:** This file, with `README.md`, is the canonical source for automation, workflow, and compliance rules. For architecture, see `DECISIONS.md`. For style, see `guidelines/GUIDELINES.md` and the relevant style file.
+> **Note:** This file, with `README.md`, is the canonical source for automation, workflow, and compliance rules. For architecture, see `DECISIONS.md`. For style guidelines, see `GUIDELINES.md` and the relevant style file in `guidelines/`.
 
 > **Important:** This project contains NO CODE. You are serving as an intelligent research assistant and academic writing coach, helping researchers through structured prompts and documentation-driven guidance. Your role is to facilitate research, guide content creation, ensure academic standards, and manage the entire paper development process through natural language interaction.
 
@@ -43,10 +43,10 @@
 
 ## 2. Core Principles
 - All contributors must follow the outline-driven, style-agnostic workflow described in `DECISIONS.md`.
-- Outlines in `outlines/` define only structure (section order/names/instructions). Style, citation, and formatting are enforced by the corresponding file in `guidelines/`.
+- Outlines in `outlines/` define only structure (section order/names/instructions). Style, citation, and formatting are enforced by the corresponding file in `guidelines/` (e.g., `apa7.md`, `ieee.md`, `mla.md`).
 - Never hardcode style rules in outlines or templates.
 - Do not change `input_requirements.md` in any paper folder if it exists.
-- Document all major changes in `LEARNINGS.md` and `DECISIONS.md`.
+- Document all major changes in `DECISIONS.md`.
 - **Do not include workflow, methodology, or template details (such as recursive template-driven structure) in the academic paper itself. These belong only in repository documentation, not in the paper content.**
 
 ## 3. Academic Paper Workflow (Summary)
@@ -61,7 +61,8 @@
 5. **Peer Review & Checklist:**
    - Review each section for quality and compliance. Complete `CHECKLIST.md` before assembly/export.
 6. **Assembly & Export:**
-   - Assemble sections in outline order. Apply style rules. Export as `.docx` using `convert_to_word.py`. Do not export if required sections are missing.
+   - Assemble sections in outline order. Apply style rules. Export as `.docx` using `convert_to_word.py` (the clean, simple converter). Do not export if required sections are missing.
+   - Command: `python convert_to_word.py <paper_folder>`
 7. **Final Validation:**
    - Ensure all requirements are met and no content from other folders is included.
 8. **Writing Quality:**
@@ -73,7 +74,8 @@
 11. **Final Submission:**
     - Confirm the paper is ready for submission or export, and perform the final submission step as required by your workflow or repository guidelines.
 12. **Configure Export Script:**
-    - Ensure conversion scripts process the correct folder.
+    - Use the clean `convert_to_word.py` script for reliable Word document generation.
+    - Always execute via `run_in_terminal` tool: `python convert_to_word.py <folder_name>`
 
 ## 4. Key Commands
 - **list commands**: Display a list of all available user commands for this repository.
@@ -81,7 +83,7 @@
 - **create content**: Generate all required sections using the selected outline and requirements.
 - **review content**: Review for academic quality and compliance. Subcommands: `review section [name]`, `review references`, `review checklist`.
 - **dive [section name]**: Provide a detailed breakdown or critique of a section.
-- **save to word**: Assemble and export as `.docx` with all style requirements.
+- **save to word**: Assemble and export as `.docx` using the clean converter with all style requirements. Use `run_in_terminal` tool with command: `python convert_to_word.py <folder_name>`
 - **checklist**: Display or update the completion checklist.
 - **show outline**: Show the structure and instructions from the selected outline.
 - **show requirements**: Show the current `input_requirements.md`.
@@ -106,10 +108,38 @@
     - Flagging any unsupported, outdated, or questionable claims or sources.
     - Providing a summary report of fact-checking results and recommendations for corrections or improvements. The output is saved as `fact_check.md` in the paper folder.
 
-## 5. Azure Development
+## 5. Document Conversion
+- Use the clean, reliable `convert_to_word.py` script for Word document generation.
+- The converter automatically detects citation style from `input_requirements.md`.
+- Supports all major academic citation styles with proper formatting.
+- Simple command: `python convert_to_word.py <paper_folder>`
+
+### How to Use the Word Converter
+1. **Basic Usage**: Run `python convert_to_word.py <paper_folder>` from the repository root
+2. **Requirements**: The paper folder must contain a `paper.md` file
+3. **Automatic Features**:
+   - Detects paper title from `input_requirements.md` (## Topic section)
+   - Creates safe filename from title (removes special characters)
+   - Applies basic academic formatting
+4. **Output**: Creates `<Safe_Title>.docx` in the same folder as the paper
+5. **Error Handling**: Provides clear error messages for missing files or conversion issues
+
+### When to Convert
+- After completing all paper sections in `paper.md`
+- When responding to "save to word" command
+- For final document preparation before submission
+- To create Word documents for peer review or sharing
+
+### Converter Commands for Copilot
+- Always use the `run_in_terminal` tool to execute: `python convert_to_word.py <folder_name>`
+- Check that `paper.md` exists before attempting conversion
+- Inform users of the output file location after successful conversion
+- If conversion fails, check for missing `paper.md` or Pandoc installation issues
+
+## 6. Azure Development
 - Always use Microsoft Azure best practices for Azure-related code or operations.
 
-## 6. Clarification
+## 7. Clarification
 - If instructions are missing or unclear, ask for clarification before proceeding.
 
 ## Recursive Section Structure for Case Studies and Similar Sections
@@ -122,4 +152,4 @@ When generating or reviewing outlines, always check for sections that represent 
 
 ---
 
-*For full details, see `README.md`, `DECISIONS.md`, and `guidelines/GUIDELINES.md`. This file supersedes any previous workflow or automation documentation.*
+*For full details, see `README.md`, `DECISIONS.md`, and `GUIDELINES.md`. This file supersedes any previous workflow or automation documentation.*

@@ -1,33 +1,37 @@
-# Workflow Instructions
+# Input Requirements for Academic Paper or Essay
 
-1. **Setup**
-   - Ensure you have all necessary files and folders as per the repository guidelines.
-   - Install any required software or dependencies needed for the workflow.
+## Instructions
+- Fill out this form to specify the requirements for your paper or essay.
+- The automation will use your answers to select the correct outline (structure) and style guideline (formatting/citation).
+- You can add or remove required/optional sections as needed for your assignment.
 
-2. **Paper Development**
-   - **Outline Selection:**
-     - Choose an appropriate outline for your paper from the provided templates.
-   - **Content Creation:**
-     - Generate content for each section of the paper based on the selected outline.
-   - **Review and Revise:**
-     - Review the content for academic quality, coherence, and compliance with guidelines.
-     - Revise sections as necessary based on the review.
+---
 
-3. **Finalization**
-   - **Finalize Checklist:**
-     - Mark all items in `CHECKLIST.md` as complete.
-   - **Final Submission:**
-     - Confirm the paper is ready for submission or export, and perform the final submission step as required by your workflow or repository guidelines.
-   - **Configure Export Script:**
-     - Ensure conversion scripts process the correct folder.
+**Title:**
+> (Enter your paper or essay title)
 
-## 3. Key Commands
-- **initiate [folder] with [requirements]**: Create the folder if it does not exist, then set up the paper with all required files and select the outline. No need to create a workspace or perform any additional setup beyond preparing the necessary templates for the paper.
-- **create content**: Generate all required sections using the selected outline and requirements.
-- **review content**: Review for academic quality and compliance. Subcommands: `review section [name]`, `review references`, `review checklist`.
-- **dive [section name]**: Provide a detailed breakdown or critique of a section.
-- **save to word**: Assemble and export as `.docx` with all style requirements.
-- **checklist**: Display or update the completion checklist.
-- **show outline**: Show the structure and instructions from the selected outline.
-- **show requirements**: Show the current `input_requirements.md`.
-- **submit paper**: Perform the final submission step, confirming the paper is ready for submission or export.
+**Type:**
+> (Select one: research paper, essay, literature review, case study, project report, dissertation, etc.)
+
+**Style:**
+> (Select one: APA 7, IEEE, Chicago, Harvard, MLA, ABNT, Vancouver, Turabian, etc.)
+
+**Outline:**
+> (Select one from outlines/: e.g., researchpaper_imrad.md, essay_argumentative.md, researchpaper_literature_review.md, etc. Leave blank to auto-select based on Type)
+
+**Required Sections:**
+- (List required sections, or leave blank to use all required sections from the selected outline)
+
+**Optional Sections:**
+- (List any optional or additional sections you want to include)
+
+**Special Instructions or Notes:**
+> (Add any assignment-specific requirements, instructor notes, or preferences here)
+
+---
+
+## Usage Notes
+- All references and citations must be included in the References section of `paper.md`.
+- For workflow instructions, see `README.md` and `.github/copilot-instructions.md`.
+- For style guidelines, see files in `guidelines/` directory.
+- For paper structures, see files in `outlines/` directory.

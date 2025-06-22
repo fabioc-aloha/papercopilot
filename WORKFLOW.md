@@ -24,14 +24,11 @@
 - This approach ensures that all page breaks, formatting, and style requirements are preserved exactly as in the Word document.
 - For documents with complex mathematical formulas, a LaTeX output (`paper.latex`) is automatically generated alongside the Word document, which can be used with a LaTeX compiler for high-quality PDF generation.
 
-## Multiple Format Conversion (2025+)
-- The conversion script now generates multiple output files for each paper:
-  1. A Word document (`.docx`) generated from the Markdown source
-  2. A LaTeX document (`paper.latex`) for preserving complex formulas
-  3. A second Word document (with suffix `_latex.docx`) generated from the LaTeX source
-- This allows users to compare the different renderings and choose the most appropriate one based on their needs.
-- If mathematical formulas or complex formatting is critical, users can compare both Word outputs to determine which better preserves their content.
-- To generate all three files, simply run: `python convert_to_word.py <paper_folder>`
+## Simple Word Document Conversion (2025+)
+- The conversion script now generates clean Word documents from Markdown source
+- Focus on reliability and simplicity over multiple format generation
+- Clean converter ensures compatibility and eliminates corruption issues
+- To generate Word document: `python convert_to_word.py <paper_folder>`
 
 ## Page Break Handling
 - Page breaks in Markdown (`\pagebreak` or `\newpage`) are automatically converted to DOCX-compatible page breaks using Pandoc's raw XML (`<w:br w:type="page"/>`).
@@ -40,7 +37,30 @@
 ### Structure vs. Style
 - **outlines/**: Provides the canonical order and required/optional sections for each paper/essay type. Outlines are style-agnostic and do not contain formatting or citation rules.
 - **guidelines/**: Enforces all style-specific requirements, including section naming, formatting, citation, and reference style. Each guidelines file corresponds to a citation style (e.g., ieee.md, apa7.md).
-- **templates/**: Contains Pandoc LaTeX templates for each supported style, used for PDF/Word export.
+- **templates/**: Contains LaTeX templates for advanced formatting needs:
+  - **LaTeX Templates**: High-quality LaTeX templates for complex mathematical content
+  - **Clean Converter**: Simple, reliable Word document generation
+  - **Style Support**: All 8 major citation styles supported via guidelines
+
+### Current Template Status
+| Style | LaTeX Template | Guidelines | Status |
+|-------|---------------|------------|---------|
+| **APA 7** | ✅ apa7.latex | ✅ apa7.md | Ready |
+| **IEEE** | ✅ ieee.latex | ✅ ieee.md | Ready |
+| **MLA** | ✅ mla.latex | ✅ mla.md | Ready |
+| **Chicago** | ✅ chicago.latex | ✅ chicago.md | Ready |
+| **Harvard** | ✅ harvard.latex | ✅ harvard.md | Ready |
+| **Vancouver** | ✅ vancouver.latex | ✅ vancouver.md | Ready |
+| **Turabian** | ✅ turabian.latex | ✅ turabian.md | Ready |
+| **ABNT** | ✅ abnt.latex | ✅ abnt.md | Ready |
+| **APA 7** | ✅ apa7.latex | ✅ apa_pandoc_reference.docx | ✅ apa7.md |
+| **IEEE** | ✅ ieee.latex | ✅ ieee_pandoc_reference.docx | ✅ ieee.md |
+| **MLA** | ✅ mla.latex | ✅ mla_pandoc_reference.docx | ✅ mla.md |
+| **Chicago** | ✅ chicago.latex | ✅ chicago_pandoc_reference.docx | ✅ chicago.md |
+| **Harvard** | ✅ harvard.latex | ✅ harvard_pandoc_reference.docx | ✅ harvard.md |
+| **Vancouver** | ✅ vancouver.latex | ✅ vancouver_pandoc_reference.docx | ✅ vancouver.md |
+| **Turabian** | ✅ turabian.latex | ✅ turabian_pandoc_reference.docx | ✅ turabian.md |
+| **ABNT** | ✅ abnt.latex | ✅ abnt_pandoc_reference.docx | ✅ abnt.md |
 
 ---
 
@@ -62,5 +82,5 @@
 ### Notes
 - Never hardcode style rules in outlines/ or templates/.
 - All style enforcement must reference the appropriate guidelines/ file.
-- Document all workflow changes in `LEARNINGS.md` and `DECISIONS.md`.
+- Document all workflow changes in `DECISIONS.md`.
 - All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.
