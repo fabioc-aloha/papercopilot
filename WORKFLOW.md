@@ -1,234 +1,66 @@
-# Academic Paper Workflow Guide
+# WORKFLOW.md
 
-This document describes the complete workflow for creating academic papers using the PaperCopilot system.
-
-## Overview
-
-The PaperCopilot workflow is built on three core principles:
-1. **Outline-driven structure**: Paper organization defined by outlines in `outlines/`
-2. **Style-agnostic content**: Structure separate from formatting rules
-3. **Single-file approach**: All content consolidated in `paper.md`
+## Template Folder Deprecation (May 2025)
+- All outlines in `outlines/` are now fully self-contained and do not require or reference any files from the `template/` folder.
+- All section instructions and content guidance are embedded directly in the outlines.
+- The `template/` folder is no longer required for any workflow, automation, or content generation.
+- You may safely delete the `template/` folder after confirming all custom content has been migrated to the outlines.
 
 ---
 
-## Quick Start
-
-### 1. Initialize New Paper
-```
-initiate [folder_name] with [requirements]
-```
-This creates:
-- `input_requirements.md` - Paper specifications
-- `paper.md` - Main content file  
-- `CHECKLIST.md` - Quality control checklist
-- `outline.md` - Copy of selected outline
-
-### 2. Generate Content
-```
-create content
-```
-Generates all sections based on selected outline and requirements.
-
-### 3. Review & Refine
-```
-peer review [folder_name]
-fact-check [folder_name]
-```
-Ensures academic quality and factual accuracy.
-
-### 4. Export Final Document
-```
-save to word
-```
-Creates publication-ready Word document with proper formatting.
+## Version 2: Outline-Driven, Style-Agnostic Workflow (2025+)
+- All automation and Copilot workflows use outline selection logic instead of hardcoded chapter selection.
+- Each paper or essay type is defined by a style-agnostic outline in outlines/ (e.g., researchpaper_general.md, essay_general.md). Outlines specify only the canonical structure (order and names of required/optional sections).
+- All style, citation, and formatting rules are enforced by the corresponding file in guidelines/ (e.g., ieee.md, apa7.md). Outlines never include style rules.
+- The automation and assembly scripts use the selected outline to determine which section files to assemble and in what order, ensuring flexibility and style-agnostic structure.
+- Contributors (human and AI) must never hardcode style rules in outlines/ or templates/.
+- All documentation, templates, and scripts have been updated to reflect this logic. See README.md and .github/copilot-instructions.md for details.
+- To-do: Expand outlines/ to support additional popular academic structures (see DECISIONS.md for the list).
 
 ---
+
+## PDF Export Workflow (May 2025)
+- The repository no longer includes a direct Markdown-to-PDF script. To generate a PDF, first use `convert_to_word.py` to create a `.docx` file, then open the file in Microsoft Word and use "Save as PDF".
+- This approach ensures that all page breaks, formatting, and style requirements are preserved exactly as in the Word document.
+- For documents with complex mathematical formulas, a LaTeX output (`paper.latex`) is automatically generated alongside the Word document, which can be used with a LaTeX compiler for high-quality PDF generation.
+
+## Multiple Format Conversion (2025+)
+- The conversion script now generates multiple output files for each paper:
+  1. A Word document (`.docx`) generated from the Markdown source
+  2. A LaTeX document (`paper.latex`) for preserving complex formulas
+  3. A second Word document (with suffix `_latex.docx`) generated from the LaTeX source
+- This allows users to compare the different renderings and choose the most appropriate one based on their needs.
+- If mathematical formulas or complex formatting is critical, users can compare both Word outputs to determine which better preserves their content.
+- To generate all three files, simply run: `python convert_to_word.py <paper_folder>`
+
+## Page Break Handling
+- Page breaks in Markdown (`\pagebreak` or `\newpage`) are automatically converted to DOCX-compatible page breaks using Pandoc's raw XML (`<w:br w:type="page"/>`).
+- This ensures that each major section starts on a new page in both the Word and exported PDF documents.
+
+### Structure vs. Style
+- **outlines/**: Provides the canonical order and required/optional sections for each paper/essay type. Outlines are style-agnostic and do not contain formatting or citation rules.
+- **guidelines/**: Enforces all style-specific requirements, including section naming, formatting, citation, and reference style. Each guidelines file corresponds to a citation style (e.g., ieee.md, apa7.md).
+- **templates/**: Contains Pandoc LaTeX templates for each supported style, used for PDF/Word export.
+
+---
+
+### Workflow Steps
+1. **Identify Requirements**
+   - Read `input_requirements.md` to determine paper/essay type and citation style.
+2. **Select Outline**
+   - Use the appropriate outline from `outlines/` for structure.
+3. **Apply Guidelines**
+   - Use the corresponding file in `guidelines/` to enforce all style rules.
+4. **Content Generation**
    - For each section in the outline, generate content using the embedded instructions in the outline, ensuring compliance with the selected style.
 5. **Assembly and Export**
    - Assemble the document in the order specified by the outline, applying all style rules from the guidelines file.
-   - Export to .docx or PDF using the conversion script (`convert_to_word.py`).
+   - Export to .docx and LaTeX using the conversion script (`convert_to_word.py`).
+   - The LaTeX output (`paper.latex`) preserves complex mathematical formulas.
    - No table of contents is generated by default; explicit pagination is handled via `\pagebreak` tags in markdown, converted to `\newpage` in LaTeX.
-6. **Finalize Checklist:**
-    - Mark all items in `CHECKLIST.md` as complete.
-7. **Final Submission:**
-    - Confirm the paper is ready for submission or export, and perform the final submission step as required by your workflow or repository guidelines.
-8. **Configure Export Script:**
-    - Ensure conversion scripts process the correct folder.
 
 ### Notes
 - Never hardcode style rules in outlines/ or templates/.
 - All style enforcement must reference the appropriate guidelines/ file.
 - Document all workflow changes in `LEARNINGS.md` and `DECISIONS.md`.
 - All contributors and automation must follow these rules for every academic writing task to ensure compliance, reliability, and publication-ready output.
-
----
-
-## Recursive Section Structure for Case Studies and Similar Sections
-
-If your paper includes multiple case studies (or other repeated section types), each section should be structured using the relevant template and guidelines (e.g., Title, Description, Analysis, Discussion, Conclusion for case studies). This ensures consistency and standards compliance for all repeated sections.
-
-When drafting or reviewing outlines, always check for sections that represent repeated units (such as case studies, experiments, or profiles) and apply the appropriate template recursively within those sections.
-
----
-
-## 3. Key Commands
-
-- **convert_to_word**: Convert the Markdown file to a Word document using Pandoc.
-- **initiate [folder] with [requirements]**: Create the folder if it does not exist, then set up the paper with all required files and select the outline. No need to create a workspace or perform any additional setup beyond preparing the necessary templates for the paper.
-- **create content**: Generate all required sections using the selected outline and requirements.
-- **review content**: Review for academic quality and compliance. Subcommands: `review section [name]`, `review references`, `review checklist`.
-- **dive [section name]**: Provide a detailed breakdown or critique of a section.
-- **checklist**: Display or update the completion checklist.
-- **show outline**: Show the structure and instructions from the selected outline.
-- **show requirements**: Show the current `input_requirements.md`.
-- **save to word**: Assemble and export as `.docx` with all style requirements.
-- **peer review [folder]**: Perform a comprehensive peer review of the paper in the specified folder. This includes:
-    - Ensuring the paper does not mention templates, workflow, or methodology.
-    - Verifying all in-text citations have corresponding entries in the References section.
-    - Alphabetizing the References section.
-    - Ensuring the research question is clearly stated and answered.
-    - Improving academic tone, flow, and quality throughout.
-    - Acting as a peer reviewer to provide publication-ready content.
-- **professor [folder]**: Perform a rigorous academic evaluation of the paper in the specified folder, acting as a professor. This includes:
-    - Assigning a grade based on academic rigor and quality.
-    - Providing detailed observations and recommendations for improvement.
-    - Saving the evaluation as `Professor.md` in the paper folder.
-- **fact-check [folder]**: Perform a comprehensive fact-check of the paper in the specified folder. This includes:
-    - Verifying all figures, statistics, and claims mentioned in the paper against the cited sources.
-    - Checking the legitimacy and credibility of all references in the References section.
-    - Flagging any unsupported, outdated, or questionable claims or sources.
-    - Providing a summary report of fact-checking results and recommendations for corrections or improvements. The output is saved as `fact_check.md` in the paper folder.
-
-- **submit [folder] to [publication]**: Submit the paper in the specified folder to the named journal or publication. This includes:
-    - Evaluating if the target publication is a good fit for the paper’s topic, structure, and quality.
-    - Providing a diagnostic on the likelihood of acceptance and rationale (e.g., scope match, style, novelty, rigor).
-    - Saving the evaluation as `[publication].md` in the paper folder, so users can test multiple publication possibilities.
-
----
-
-## Detailed Workflow
-
-### Phase 1: Project Setup
-
-#### Input Requirements (`input_requirements.md`)
-Define your paper specifications:
-- **Title**: Clear, descriptive title
-- **Type**: Research paper, essay, report, etc.
-- **Objective**: Purpose and scope of the paper
-- **Required Sections**: List of sections needed
-- **Style**: Citation style (APA, IEEE, MLA, etc.)
-- **Notes**: Any special requirements
-
-#### Outline Selection
-The system automatically selects the appropriate outline based on:
-- Paper type (research paper vs essay)
-- Academic discipline (STEM, humanities, social sciences)
-- Structural requirements (IMRaD, case study, literature review)
-
-### Phase 2: Content Development
-
-#### Section Generation
-Each section is created following:
-- **Structure**: From selected outline
-- **Style**: From corresponding guideline file
-- **Quality**: Academic tone and professional standards
-- **Citations**: Proper in-text citations with references
-
-#### Content Quality Standards
-- **Academic rigor**: Evidence-based arguments
-- **Professional tone**: Formal, objective writing
-- **Proper citations**: Style-compliant referencing
-- **Logical flow**: Clear progression of ideas
-- **Fact-checking**: Verified claims and statistics
-
-### Phase 3: Review & Validation
-
-#### Peer Review Process
-- Comprehensive content review
-- Citation verification
-- Reference alphabetization
-- Academic tone assessment
-- Structural compliance check
-
-#### Quality Checklist
-Before export, verify:
-- [ ] All required sections complete
-- [ ] In-text citations have reference entries
-- [ ] References properly formatted
-- [ ] Academic tone maintained
-- [ ] Facts and statistics verified
-- [ ] Proper page breaks inserted
-
----
-
-## Technical Architecture
-
-### File Structure
-```
-project_root/
-├── outlines/           # Structure definitions
-├── guidelines/         # Style rules
-├── templates/          # Pandoc export templates
-└── paper_folder/
-    ├── input_requirements.md
-    ├── paper.md        # Single content file
-    ├── CHECKLIST.md    # Quality control
-    └── outline.md      # Selected outline copy
-```
-
-### Export Process
-1. **Validation**: Check all sections exist
-2. **Processing**: Apply style-specific formatting
-3. **Conversion**: Use Pandoc with appropriate template
-4. **Output**: Generate Word document with proper formatting
-
-### Page Break Handling
-- Insert `\pagebreak` or `\newpage` after major sections
-- Automatic conversion to Word-compatible breaks
-- Preserved in PDF export via Word
-
----
-
-## Best Practices
-
-### For Content Creation
-- Follow the selected outline structure exactly
-- Maintain consistent academic tone
-- Use proper in-text citations
-- Include comprehensive references
-- Insert page breaks between major sections
-
-### For Quality Assurance
-- Complete peer review before finalizing
-- Fact-check all claims and statistics
-- Verify citation accuracy
-- Check reference formatting
-- Test export functionality
-
-### For Collaboration
-- Never modify `input_requirements.md` once set
-- Document changes in `LEARNINGS.md`
-- Follow style guidelines consistently
-- Use single-file approach for all content
-
----
-
-## Troubleshooting
-
-### Common Issues
-| Problem | Solution |
-|---------|----------|
-| Missing sections | Check outline requirements |
-| Citation errors | Verify reference entries exist |
-| Export failures | Ensure all files are properly formatted |
-| Style inconsistencies | Confirm correct guideline file usage |
-
-### Getting Help
-- Review `LEARNINGS.md` for known issues
-- Check `DECISIONS.md` for architectural context
-- Examine test papers for examples
-- Use available commands for assistance
-
----
-
-*For complete command reference, see README.md. For style-specific rules, see individual guideline files.*

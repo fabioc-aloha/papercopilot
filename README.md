@@ -226,9 +226,20 @@ For contributor guidelines and automation rules, see `.github/copilot-instructio
 ---
 
 *Last updated: June 2025. For the most current information, see the individual documentation files.*
-- Automatic conversion to Word-compatible page breaks
-- Style-specific formatting applied during export
-- PDF generation via Word's "Save as PDF" feature
+
+- Page breaks in the Markdown source (e.g., `\pagebreak` or `\newpage`) are now converted to DOCX-compatible page breaks using Pandoc's raw XML (`<w:br w:type="page"/>`). This ensures that each major section starts on a new page in the generated Word document.
+- For PDF output, use Word's export feature to preserve these page breaks.
+>>>>>>> fb76016581c4c81734f1f7fbe1e8a175aeaa37f5
+
+## Multiple Document Format Conversions
+
+- The system now generates three separate output files for each paper:
+  1. A Word document (`.docx`) generated from the Markdown source, with filename based on the short title.
+  2. A LaTeX document (`paper.latex`) preserving complex mathematical formulas.
+  3. A second Word document (with suffix `_latex.docx`) generated from the LaTeX source.
+- This allows users to compare the different renderings and choose the one that best preserves formatting.
+- To generate these files, simply run the conversion script as usual: `python convert_to_word.py <paper_folder>`
+- Compare the two `.docx` files to identify any differences in formatting, especially for complex mathematical formulas.
 
 ---
 

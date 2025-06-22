@@ -5,5 +5,23 @@ __pycache__/
 *.pyo
 *.pyd
 .env
-# VS Code settings
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Generated files
+temp_paper_for_conversion.md
+assembled_paper.md
+*.log
+
+# Build distribution artifacts
+dist/
+build/
+*.egg-info/
+
+# Editor settings
 .vscode/
+.idea/
