@@ -70,6 +70,20 @@ For each paper, the system generates:
 - **Institution-Friendly**: Turabian for student papers
 - **Publication-Ready**: All major journal and conference formats
 
+### Sample Paper Demonstration
+
+A fully developed sample academic paper is included in the `sample_paper` folder. This paper demonstrates:
+- The complete documentation-driven workflow
+- IMRaD structure and APA 7 formatting
+- In-text citations, alphabetized references, and running head
+- Model selection and comparison tables
+- Python code examples for all major regression models
+- A dataset generator supporting all code examples and variable types
+- Professor-style critique and publication-ready review
+- Export to Word using the clean converter
+
+This sample paper serves as a reference for structure, formatting, and workflow best practices. All code examples are runnable with the generated dataset, and the paper is validated for academic rigor and compliance.
+
 ---
 
-**Result**: PaperCopilot now provides a reliable, clean document conversion system with comprehensive LaTeX templates and academic guidelines. The streamlined converter ensures consistent Word document generation while maintaining simplicity and reliability. 🎯
+**Result**: PaperCopilot now provides a reliable, clean document conversion system, comprehensive LaTeX templates, academic guidelines, and a complete sample paper demonstrating end-to-end workflow and publication-ready output. 🎯

@@ -1,7 +1,7 @@
 ![PaperCopilot Banner](banner.png)
 
 # PaperCopilot: AI-Powered Academic Writing Assistant
-**Version 0.9.1 Golden**
+**Version 1.0.0 Golden**
 
 > **Write Better Papers Faster**: PaperCopilot is your intelligent research assistant that helps you create high-quality academic papers through natural language commands in VS Code. No coding required—just tell it what you need.
 
@@ -165,6 +165,21 @@ Your paper folder will automatically contain:
 - **Quality Assurance** - Built-in review and validation processes
 - **Multi-Style Support** - Works with all major citation styles
 - **Export Ready** - Professional Word documents for submission
+
+---
+
+## Sample Academic Paper
+
+A fully developed sample academic paper is provided in the `sample_paper` folder. This paper demonstrates the complete documentation-driven workflow, including:
+- IMRaD structure (Introduction, Methods, Results, and Discussion)
+- In-text citations and APA 7 references
+- Model selection guidelines and comparison tables
+- Python code examples for all major regression models
+- Dataset generator supporting all code examples
+- Professor-style critique and publication-ready review
+- Export to Word using the clean converter
+
+You can use this sample as a reference for structure, formatting, and workflow best practices.
 
 ---
 
