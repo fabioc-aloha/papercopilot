@@ -7,9 +7,10 @@ PaperCopilot now provides comprehensive template support for all major academic 
 ### Template Components
 
 #### 1. LaTeX Templates (`templates/*.latex`)
-- **Purpose**: High-quality typesetting for complex mathematical content and PDF generation
+- **Purpose**: Available for users who prefer LaTeX compilation for complex mathematical content
 - **Features**: Style-specific document classes, formatting, bibliography styles
 - **Coverage**: 8 styles with specialized LaTeX configurations
+- **Status**: Available but not integrated into automated workflow
 
 #### 2. Document Converter (`convert_to_word.py`)
 - **Purpose**: Clean, reliable Word document generation from Markdown
@@ -39,7 +40,7 @@ PaperCopilot now provides comprehensive template support for all major academic 
 The conversion system automatically:
 1. **Detects style** from `input_requirements.md`
 2. **Extracts paper title** for filename generation
-3. **Applies clean formatting** via Pandoc conversion
+3. **Applies clean formatting** via Pandoc conversion to Word
 4. **Creates Word documents** that open reliably
 5. **Logs conversion process** for transparency and debugging
 

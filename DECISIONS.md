@@ -28,11 +28,11 @@
 - Improved the regex in `convert_to_word.py` to robustly match all variants of `\\pagebreak` and `\\newpage` (including extra spaces and case differences) and convert them to DOCX raw XML page breaks.
 - Updated guidelines to instruct users to insert a line with `\\pagebreak` (or `\\newpage`) after each major section in markdown for correct pagination in Word export.
 
-## June 2025: Multiple Document Format Conversions
-- Decision: Added functionality to convert both Markdown and LaTeX files to separate .docx outputs.
-- Rationale: Different rendering engines may handle complex content (like mathematical formulas) differently. 
-- Implementation: The `convert_to_word.py` script now generates three files: a .docx from Markdown, a .latex file, and a second .docx from the LaTeX source.
-- Standard: Users should compare both Word documents to determine which better preserves their specific content and formatting requirements.
+## July 2025: Simplified Document Conversion
+- Decision: Maintain simple, reliable Word document conversion from Markdown only.
+- Rationale: Focus on reliability and simplicity over multiple format generation to eliminate conversion issues.
+- Implementation: The `convert_to_word.py` script generates clean .docx files from Markdown source using Pandoc.
+- Standard: Users receive a single, clean Word document ready for submission or further editing.
 
 # Decision: Paper Content vs. Documentation of Workflow/Methodology
 
